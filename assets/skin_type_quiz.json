@@ -1,0 +1,329 @@
+{
+  "title": "Cilt Tipi Belirleme Testi",
+  "description": "Cildinizin tipini belirlemek için aşağıdaki soruları yanıtlayın",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Gün içinde yüzündeki parlama/yağlanma durumu nasıl?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tüm yüzde hızlı parlama/yağlanma",
+          "score_map": {"yagli": 2}
+        },
+        {
+          "id": "b",
+          "text": "Sadece T bölgesinde parlama, yanaklar normal/kuru",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "c",
+          "text": "Hafif parlama var ama kontrol altında",
+          "score_map": {"normal": 1}
+        },
+        {
+          "id": "d",
+          "text": "Parlama yok, gün içinde kuruluk hissi oluyor",
+          "score_map": {"kuru": 2}
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Yüzünü temizledikten sonra cildin nasıl hissediliyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kısa sürede tekrar yağlanıyor",
+          "score_map": {"yagli": 2}
+        },
+        {
+          "id": "b",
+          "text": "Gergin/kurumuş hissediyorum",
+          "score_map": {"kuru": 2}
+        },
+        {
+          "id": "c",
+          "text": "T bölgesi yağlı, yanaklar gergin",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "d",
+          "text": "Dengeli ve rahat",
+          "score_map": {"normal": 1}
+        },
+        {
+          "id": "e",
+          "text": "Yanma/batma oluyor",
+          "score_map": {"hassas": 2}
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Gözenek görünümü en çok hangisine benziyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Geniş ve belirgin",
+          "score_map": {"yagli": 2}
+        },
+        {
+          "id": "b",
+          "text": "T bölgede geniş, yanaklarda küçük",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "c",
+          "text": "Küçük/neredeyse görünmez",
+          "score_map": {"kuru": 2}
+        },
+        {
+          "id": "d",
+          "text": "Orta boy, çok dikkat çekmiyor",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Sivilce/komedon (siyah-beyaz nokta) sıklığı nasıl?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sık ve iltihaplı ataklar yaşıyorum",
+          "score_map": {"akneli": 2, "yagli": 1}
+        },
+        {
+          "id": "b",
+          "text": "Ara sıra oluyor",
+          "score_map": {"akneli": 1}
+        },
+        {
+          "id": "c",
+          "text": "Nadiren",
+          "score_map": {"normal": 1}
+        },
+        {
+          "id": "d",
+          "text": "Özellikle T bölgesinde siyah/beyaz noktalar",
+          "score_map": {"akneli": 2, "karma": 1}
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Kızarıklık, yanma veya batma tetikleyen durumlar var mı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parfüm/alkol gibi bazı ürünlerde yanma-batma",
+          "score_map": {"hassas": 2}
+        },
+        {
+          "id": "b",
+          "text": "Sıcak/soğuk/rüzgarda anında kızarma",
+          "score_map": {"hassas": 2}
+        },
+        {
+          "id": "c",
+          "text": "Belirgin tetikleyici yok",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Pul pul dökülme/kuruluk yaşıyor musun?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sık sık ve belirgin",
+          "score_map": {"kuru": 2}
+        },
+        {
+          "id": "b",
+          "text": "Bazen/mevsimsel",
+          "score_map": {"kuru": 1}
+        },
+        {
+          "id": "c",
+          "text": "Hayır",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "Makyajın gün içinde nasıl davranıyor? (yapıyorsan)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hızla akıyor/bozuluyor",
+          "score_map": {"yagli": 2}
+        },
+        {
+          "id": "b",
+          "text": "Kuru bölgelerde parçalanıyor/çizgilere doluyor",
+          "score_map": {"kuru": 2}
+        },
+        {
+          "id": "c",
+          "text": "T bölgesi parlarken yanaklar mat kalıyor",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "d",
+          "text": "Genelde dengeli",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Günün sonunda yüzünün genel durumu en çok hangisi?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parlak/yağlı his",
+          "score_map": {"yagli": 2}
+        },
+        {
+          "id": "b",
+          "text": "T bölgesi yağlı, yanaklar kuru",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "c",
+          "text": "Gergin/kuru his",
+          "score_map": {"kuru": 2}
+        },
+        {
+          "id": "d",
+          "text": "Dengeli",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "Kılcal damar görünürlüğü (şeffaf, kızaran cilt) var mı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Evet, kolay kızarma ve kılcal damar görünürlüğü",
+          "score_map": {"hassas": 2}
+        },
+        {
+          "id": "b",
+          "text": "Hayır",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Hormonal dönemlerde (adet/stres) sivilcelenme artıyor mu?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Evet, belirgin artış oluyor",
+          "score_map": {"akneli": 2}
+        },
+        {
+          "id": "b",
+          "text": "Hayır/emin değilim",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "Cildinin genel dokusu ve kalınlığı nasıl?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Daha kalın, parlak görünümlü",
+          "score_map": {"yagli": 1}
+        },
+        {
+          "id": "b",
+          "text": "İnce, hassas görünümlü",
+          "score_map": {"hassas": 1, "kuru": 1}
+        },
+        {
+          "id": "c",
+          "text": "Yumuşak ve pürüzsüz",
+          "score_map": {"normal": 1}
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "Cheeks vs T-zone: aşağıdakilerden hangisi seni daha iyi anlatır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cheeks kuru/normal, T-zone yağlı",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "b",
+          "text": "Cheeks yağlı, T-zone normal/kuru",
+          "score_map": {"karma": 2}
+        },
+        {
+          "id": "c",
+          "text": "Her yer benzer dengede",
+          "score_map": {"normal": 1}
+        }
+      ]
+    }
+  ],
+  "results": {
+    "rules": [
+      {
+        "condition": "yagli >= 8",
+        "skin_type": "Yağlı Cilt",
+        "description": "Cildiniz yağ üretiminde fazla aktif. Gözenekler geniş ve parlama sık görülür.",
+        "icon": "💧",
+        "color": "pink"
+      },
+      {
+        "condition": "kuru >= 6",
+        "skin_type": "Kuru Cilt",
+        "description": "Cildiniz nem eksikliği yaşıyor. Pul pul dökülme ve gerginlik hissi yaygın.",
+        "icon": "🌵",
+        "color": "orange"
+      },
+      {
+        "condition": "karma >= 6",
+        "skin_type": "Karma Cilt",
+        "description": "T bölgeniz yağlı, yanaklarınız kuru. Farklı bölgeler için farklı bakım gerekir.",
+        "icon": "🎭",
+        "color": "purple"
+      },
+      {
+        "condition": "hassas >= 4",
+        "skin_type": "Hassas Cilt",
+        "description": "Cildiniz çevresel faktörlere karşı hassas. Kızarıklık ve yanma sık görülür.",
+        "icon": "🌸",
+        "color": "red"
+      },
+      {
+        "condition": "akneli >= 4",
+        "skin_type": "Akneli Cilt",
+        "description": "Sivilce ve komedonlarla mücadele ediyorsunuz. Özel bakım rutini gerekli.",
+        "icon": "🔴",
+        "color": "deepOrange"
+      },
+      {
+        "condition": "default",
+        "skin_type": "Normal Cilt",
+        "description": "Cildiniz dengeli ve sağlıklı. Mevcut rutininizi koruyabilirsiniz.",
+        "icon": "✨",
+        "color": "green"
+      }
+    ]
+  }
+}
