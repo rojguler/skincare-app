@@ -232,11 +232,9 @@ flutter build ios --release
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.
 
-## 👨‍💻 Developer
 
-**Rojin Güler**
-- GitHub: [@rojinguler](https://github.com/rojinguler)
-- LinkedIn: [Rojin Güler](https://linkedin.com/in/rojinguler)
+
+
 
 ## 📞 Contact
 
@@ -476,11 +474,6 @@ flutter build ios --release
 
 Bu proje MIT lisansı altında lisanslanmıştır - detaylar için `LICENSE` dosyasına bakın.
 
-## 👨‍💻 Geliştirici
-
-**Rojin Güler**
-- GitHub: [@rojinguler](https://github.com/rojinguler)
-- LinkedIn: [Rojin Güler](https://linkedin.com/in/rojinguler)
 
 ## 📞 İletişim
 
