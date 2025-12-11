@@ -14,11 +14,11 @@ class Validators {
   /// Validates email address
   static String? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'E-posta adresi gerekli';
+      return 'Email address is required';
     }
     
     if (!RegExp(_emailRegex).hasMatch(value.trim())) {
-      return 'Geçerli bir e-posta adresi girin';
+      return 'Please enter a valid email address';
     }
     
     return null;
@@ -27,15 +27,15 @@ class Validators {
   /// Validates password strength
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Şifre gerekli';
+      return 'Password is required';
     }
     
     if (value.length < 6) {
-      return 'Şifre en az 6 karakter olmalı';
+      return 'Password must be at least 6 characters';
     }
     
     if (value.length > 128) {
-      return 'Şifre çok uzun (max 128 karakter)';
+      return 'Password is too long (max 128 characters)';
     }
     
     return null;
@@ -44,11 +44,11 @@ class Validators {
   /// Validates password confirmation
   static String? validatePasswordConfirmation(String? value, String? password) {
     if (value == null || value.isEmpty) {
-      return 'Şifre tekrarı gerekli';
+      return 'Password confirmation is required';
     }
     
     if (value != password) {
-      return 'Şifreler eşleşmiyor';
+      return 'Passwords do not match';
     }
     
     return null;
@@ -57,19 +57,19 @@ class Validators {
   /// Validates name field
   static String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Ad soyad gerekli';
+      return 'Name is required';
     }
     
     if (value.trim().length < 2) {
-      return 'Ad soyad en az 2 karakter olmalı';
+      return 'Name must be at least 2 characters';
     }
     
     if (value.trim().length > 50) {
-      return 'Ad soyad çok uzun (max 50 karakter)';
+      return 'Name is too long (max 50 characters)';
     }
     
     if (!RegExp(_nameRegex).hasMatch(value.trim())) {
-      return 'Ad soyad sadece harfler içermeli';
+      return 'Name should only contain letters';
     }
     
     return null;
@@ -78,7 +78,7 @@ class Validators {
   /// Validates required fields
   static String? validateRequired(String? value, String fieldName) {
     if (value == null || value.trim().isEmpty) {
-      return '$fieldName gerekli';
+      return '$fieldName is required';
     }
     return null;
   }
@@ -86,7 +86,7 @@ class Validators {
   /// Validates minimum length
   static String? validateMinLength(String? value, int minLength, String fieldName) {
     if (value == null || value.trim().length < minLength) {
-      return '$fieldName en az $minLength karakter olmalı';
+      return '$fieldName must be at least $minLength characters';
     }
     return null;
   }
@@ -94,7 +94,7 @@ class Validators {
   /// Validates maximum length
   static String? validateMaxLength(String? value, int maxLength, String fieldName) {
     if (value != null && value.trim().length > maxLength) {
-      return '$fieldName en fazla $maxLength karakter olmalı';
+      return '$fieldName must be at most $maxLength characters';
     }
     return null;
   }
@@ -102,12 +102,12 @@ class Validators {
   /// Validates numeric input
   static String? validateNumber(String? value, String fieldName) {
     if (value == null || value.trim().isEmpty) {
-      return '$fieldName gerekli';
+      return '$fieldName is required';
     }
     
     final number = double.tryParse(value.trim());
     if (number == null) {
-      return 'Geçerli bir sayı girin';
+      return 'Please enter a valid number';
     }
     
     return null;
@@ -116,12 +116,12 @@ class Validators {
   /// Validates skin type selection
   static String? validateSkinType(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Cilt tipi seçimi gerekli';
+      return 'Skin type selection is required';
     }
     
-    const validSkinTypes = ['Kuru', 'Yağlı', 'Karma', 'Normal', 'Hassas'];
+    const validSkinTypes = ['Dry', 'Oily', 'Combination', 'Normal', 'Sensitive'];
     if (!validSkinTypes.contains(value.trim())) {
-      return 'Geçerli bir cilt tipi seçin';
+      return 'Please select a valid skin type';
     }
     
     return null;
@@ -130,7 +130,7 @@ class Validators {
   /// Validates notes field
   static String? validateNotes(String? value) {
     if (value != null && value.trim().length > 500) {
-      return 'Notlar en fazla 500 karakter olmalı';
+      return 'Notes must be at most 500 characters';
     }
     return null;
   }
@@ -138,15 +138,15 @@ class Validators {
   /// Validates product name
   static String? validateProductName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Ürün adı gerekli';
+      return 'Product name is required';
     }
     
     if (value.trim().length < 2) {
-      return 'Ürün adı en az 2 karakter olmalı';
+      return 'Product name must be at least 2 characters';
     }
     
     if (value.trim().length > 100) {
-      return 'Ürün adı en fazla 100 karakter olmalı';
+      return 'Product name must be at most 100 characters';
     }
     
     return null;
@@ -155,13 +155,13 @@ class Validators {
   /// Validates barcode
   static String? validateBarcode(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Barkod gerekli';
+      return 'Barcode is required';
     }
     
     final cleanBarcode = value.trim().replaceAll(RegExp(r'[^\d]'), '');
     
     if (cleanBarcode.length < 8 || cleanBarcode.length > 14) {
-      return 'Geçerli bir barkod girin (8-14 haneli)';
+      return 'Please enter a valid barcode (8-14 digits)';
     }
     
     return null;
@@ -170,16 +170,16 @@ class Validators {
   /// Validates rating
   static String? validateRating(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Değerlendirme gerekli';
+      return 'Rating is required';
     }
     
     final rating = double.tryParse(value.trim());
     if (rating == null) {
-      return 'Geçerli bir değerlendirme girin';
+      return 'Please enter a valid rating';
     }
     
     if (rating < 1.0 || rating > 5.0) {
-      return 'Değerlendirme 1-5 arasında olmalı';
+      return 'Rating must be between 1 and 5';
     }
     
     return null;

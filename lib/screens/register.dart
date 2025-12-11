@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage>
         !_isConfirmPasswordValid) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('Lütfen tüm alanları doğru şekilde doldurun'),
+          content: const Text('Please fill in all fields correctly'),
           backgroundColor: AppColors.error,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
@@ -136,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text(
-            'Lütfen şartları ve gizlilik politikasını kabul edin',
+            'Please accept the terms and privacy policy',
           ),
           backgroundColor: AppColors.error,
           behavior: SnackBarBehavior.floating,
@@ -199,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage>
         // Başarı mesajı
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('✅ Hoş geldin ${_nameCtrl.text}! Hesabın oluşturuldu'),
+            content: Text('✅ Welcome ${_nameCtrl.text}! Account created'),
             backgroundColor: AppColors.success,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
@@ -243,7 +243,7 @@ class _RegisterPageState extends State<RegisterPage>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         backgroundColor: AppColors.white,
         title: Text(
-          'Kullanım Şartları',
+          'Terms of Use',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -251,11 +251,11 @@ class _RegisterPageState extends State<RegisterPage>
           ),
         ),
         content: Text(
-          'GlowSun uygulamasını kullanarak aşağıdaki şartları kabul etmiş olursunuz:\n\n'
-          '• Kişisel verilerinizin güvenli şekilde saklanması\n'
-          '• Uygulama içeriğinin kişisel kullanım için olduğu\n'
-          '• Cilt bakımı önerilerinin genel bilgi amaçlı olduğu\n'
-          '• Profesyonel tıbbi tavsiye yerine geçmediği',
+          'By using GlowSun app you accept the following terms:\n\n'
+          '• Your personal data will be stored securely\n'
+          '• App content is for personal use only\n'
+          '• Skincare advice is for general information only\n'
+          '• Does not replace professional medical advice',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -265,7 +265,7 @@ class _RegisterPageState extends State<RegisterPage>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Anladım',
+              'I Understand',
               style: GoogleFonts.poppins(
                 color: AppColors.primary,
                 fontWeight: FontWeight.w600,
@@ -284,7 +284,7 @@ class _RegisterPageState extends State<RegisterPage>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         backgroundColor: AppColors.white,
         title: Text(
-          'Gizlilik Politikası',
+          'Privacy Policy',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -292,11 +292,11 @@ class _RegisterPageState extends State<RegisterPage>
           ),
         ),
         content: Text(
-          'Gizliliğiniz bizim için önemli:\n\n'
-          '• Kişisel verileriniz cihazınızda güvenle saklanır\n'
-          '• Üçüncü taraflarla paylaşılmaz\n'
-          '• Verileriniz şifrelenerek korunur\n'
-          '• İstediğiniz zaman verilerinizi silebilirsiniz',
+          'Your privacy is important to us:\n\n'
+          '• Your personal data is stored securely on your device\n'
+          '• Not shared with third parties\n'
+          '• Your data is protected with encryption\n'
+          '• You can delete your data at any time',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -306,7 +306,7 @@ class _RegisterPageState extends State<RegisterPage>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Anladım',
+              'I Understand',
               style: GoogleFonts.poppins(
                 color: AppColors.primary,
                 fontWeight: FontWeight.w600,
@@ -459,7 +459,7 @@ class _RegisterPageState extends State<RegisterPage>
 
                     // Simple Title
                     Text(
-                      'Hesap Oluştur',
+                      'Create Account',
                       style: GoogleFonts.poppins(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -470,7 +470,7 @@ class _RegisterPageState extends State<RegisterPage>
                     const SizedBox(height: 6),
 
                     Text(
-                      'GlowSun ailesine katıl',
+                      'Join the GlowSun family',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.textSecondary,
@@ -486,7 +486,7 @@ class _RegisterPageState extends State<RegisterPage>
                         // Name Field
                         _buildInputField(
                           controller: _nameCtrl,
-                          hint: 'Ad Soyad',
+                          hint: 'Full Name',
                           icon: Icons.person_outline,
                           isValid: _isNameValid,
                         ),
@@ -496,7 +496,7 @@ class _RegisterPageState extends State<RegisterPage>
                         // Email Field
                         _buildInputField(
                           controller: _emailCtrl,
-                          hint: 'E-posta',
+                          hint: 'Email',
                           icon: Icons.email_outlined,
                           keyboardType: TextInputType.emailAddress,
                           isValid: _isEmailValid,
@@ -507,7 +507,7 @@ class _RegisterPageState extends State<RegisterPage>
                         // Password Field
                         _buildInputField(
                           controller: _passCtrl,
-                          hint: 'Şifre',
+                          hint: 'Password',
                           icon: Icons.lock_outline,
                           obscureText: _obscurePass,
                           isValid: _isPasswordValid,
@@ -528,7 +528,7 @@ class _RegisterPageState extends State<RegisterPage>
                         // Confirm Password Field
                         _buildInputField(
                           controller: _confirmPassCtrl,
-                          hint: 'Şifre tekrar',
+                          hint: 'Confirm Password',
                           icon: Icons.lock_outline,
                           obscureText: _obscureConfirm,
                           isValid: _isConfirmPasswordValid,
@@ -567,14 +567,14 @@ class _RegisterPageState extends State<RegisterPage>
                                 ),
                                 child: RichText(
                                   text: TextSpan(
-                                    text: 'Kullanım şartlarını kabul ediyorum',
+                                    text: 'I accept the terms of use',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       color: AppColors.textSecondary,
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: ' (görüntüle)',
+                                        text: ' (view)',
                                         style: GoogleFonts.poppins(
                                           fontSize: 12,
                                           color: AppColors.pink,
@@ -611,14 +611,14 @@ class _RegisterPageState extends State<RegisterPage>
                                 child: RichText(
                                   text: TextSpan(
                                     text:
-                                        'Gizlilik politikasını kabul ediyorum',
+                                        'I accept the privacy policy',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       color: AppColors.textSecondary,
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: ' (görüntüle)',
+                                        text: ' (view)',
                                         style: GoogleFonts.poppins(
                                           fontSize: 12,
                                           color: AppColors.pink,
@@ -663,7 +663,7 @@ class _RegisterPageState extends State<RegisterPage>
                                     ),
                                   )
                                 : Text(
-                                    'Hesap Oluştur',
+                                    'Create Account',
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -681,7 +681,7 @@ class _RegisterPageState extends State<RegisterPage>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Zaten hesabın var mı? ',
+                          'Already have an account? ',
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             color: AppColors.textSecondary,
@@ -722,7 +722,7 @@ class _RegisterPageState extends State<RegisterPage>
                             );
                           },
                           child: Text(
-                            'Giriş Yap',
+                            'Log In',
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               color: AppColors.pink,

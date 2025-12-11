@@ -30,7 +30,7 @@ class HomeWidget extends StatelessWidget {
               Icon(Icons.spa_rounded, color: AppColors.pink, size: 24),
               const SizedBox(width: 8),
               Text(
-                'Cilt Bakım Takip',
+                'Skincare Tracker',
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -72,7 +72,7 @@ class HomeWidget extends StatelessWidget {
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              'Bugün $todayEntries kayıt',
+              '$todayEntries entries today',
               style: GoogleFonts.inter(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -104,7 +104,7 @@ class HomeWidget extends StatelessWidget {
       children: [
         Expanded(
           child: _buildActionButton(
-            'Yeni Kayıt',
+            'New Entry',
             Icons.add_rounded,
             AppColors.pink,
             () {

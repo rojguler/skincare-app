@@ -66,7 +66,7 @@ class ErrorHandler {
                   onRetry();
                 },
                 child: Text(
-                  'Tekrar Dene',
+                  'Try Again',
                   style: GoogleFonts.poppins(
                     color: AppColors.white,
                     fontWeight: FontWeight.w600,
@@ -83,7 +83,7 @@ class ErrorHandler {
         margin: const EdgeInsets.all(16),
         duration: duration,
         action: SnackBarAction(
-          label: 'Kapat',
+          label: 'Close',
           textColor: AppColors.white,
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -184,13 +184,13 @@ class ErrorHandler {
     final errorString = error.toString().toLowerCase();
     
     if (errorString.contains('network') || errorString.contains('internet')) {
-      return 'İnternet bağlantınızı kontrol edin';
+      return 'Check your internet connection';
     } else if (errorString.contains('timeout')) {
-      return 'İstek zaman aşımına uğradı';
+      return 'Request timed out';
     } else if (errorString.contains('server')) {
-      return 'Sunucu hatası oluştu';
+      return 'Server error occurred';
     } else {
-      return 'Beklenmeyen bir hata oluştu';
+      return 'An unexpected error occurred';
     }
   }
 
@@ -199,19 +199,19 @@ class ErrorHandler {
     final errorString = error.toString().toLowerCase();
     
     if (errorString.contains('user-not-found')) {
-      return 'Bu e-posta adresi ile kayıtlı kullanıcı bulunamadı';
+      return 'No user found with this email address';
     } else if (errorString.contains('wrong-password')) {
-      return 'Şifre hatalı';
+      return 'Incorrect password';
     } else if (errorString.contains('email-already-in-use')) {
-      return 'Bu e-posta adresi zaten kullanımda';
+      return 'This email address is already in use';
     } else if (errorString.contains('weak-password')) {
-      return 'Şifre çok zayıf, en az 6 karakter olmalı';
+      return 'Password is too weak, must be at least 6 characters';
     } else if (errorString.contains('invalid-email')) {
-      return 'Geçersiz e-posta adresi';
+      return 'Invalid email address';
     } else if (errorString.contains('user-disabled')) {
-      return 'Bu hesap devre dışı bırakılmış';
+      return 'This account has been disabled';
     } else {
-      return 'Kimlik doğrulama hatası';
+      return 'Authentication error';
     }
   }
 
@@ -219,20 +219,20 @@ class ErrorHandler {
   static String getValidationErrorMessage(String field, String error) {
     switch (field.toLowerCase()) {
       case 'email':
-        if (error.contains('required')) return 'E-posta adresi gerekli';
-        if (error.contains('invalid')) return 'Geçersiz e-posta formatı';
+        if (error.contains('required')) return 'Email is required';
+        if (error.contains('invalid')) return 'Invalid email format';
         break;
       case 'password':
-        if (error.contains('required')) return 'Şifre gerekli';
-        if (error.contains('min')) return 'Şifre en az 6 karakter olmalı';
-        if (error.contains('match')) return 'Şifreler eşleşmiyor';
+        if (error.contains('required')) return 'Password is required';
+        if (error.contains('min')) return 'Password must be at least 6 characters';
+        if (error.contains('match')) return 'Passwords do not match';
         break;
       case 'name':
-        if (error.contains('required')) return 'Ad soyad gerekli';
-        if (error.contains('min')) return 'Ad soyad en az 2 karakter olmalı';
+        if (error.contains('required')) return 'Name is required';
+        if (error.contains('min')) return 'Name must be at least 2 characters';
         break;
     }
-    return 'Geçersiz $field';
+    return 'Invalid $field';
   }
 }
 

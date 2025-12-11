@@ -29,43 +29,43 @@ class _ProfilePageModernState extends State<ProfilePageModern>
   // Kullanıcı bilgileri
   String _name = "Rojin Güler";
   String _email = "roj.gulerr@gmail.com";
-  String _selectedSkinType = "Karma";
-  List<String> _selectedSkinProblems = ["Sivilce", "Siyah Nokta"];
+  String _selectedSkinType = "Combination";
+  List<String> _selectedSkinProblems = ["Acne", "Blackheads"];
 
   // Cilt tipleri
   final List<Map<String, dynamic>> _skinTypes = [
     {
-      'name': 'Karma',
-      'description': 'T bölgesi yağlı, yanaklar normal',
+      'name': 'Combination',
+      'description': 'Oily T-zone, normal cheeks',
     },
     {
-      'name': 'Yağlı',
-      'description': 'Tüm yüz yağlı ve parlak',
+      'name': 'Oily',
+      'description': 'Oily and shiny all over',
     },
     {
-      'name': 'Kuru',
-      'description': 'Gergin ve pul pul dökülen',
+      'name': 'Dry',
+      'description': 'Tight and flaky',
     },
     {
       'name': 'Normal',
-      'description': 'Dengeli ve sağlıklı',
+      'description': 'Balanced and healthy',
     },
     {
-      'name': 'Hassas',
-      'description': 'Kolay tahriş olan',
+      'name': 'Sensitive',
+      'description': 'Easily irritated',
     },
   ];
 
   // Cilt sorunları
   final List<String> _skinProblems = [
-    'Sivilce',
-    'Siyah Nokta',
-    'Kırışıklık',
-    'Leke',
-    'Gözenek',
-    'Kuruluk',
-    'Yağlanma',
-    'Hassasiyet',
+    'Acne',
+    'Blackheads',
+    'Wrinkles',
+    'Blemishes',
+    'Pores',
+    'Dryness',
+    'Oiliness',
+    'Sensitivity',
   ];
 
   @override
@@ -108,8 +108,8 @@ class _ProfilePageModernState extends State<ProfilePageModern>
     setState(() {
       _name = prefs.getString('user_name') ?? "Rojin Güler";
       _email = prefs.getString('user_email') ?? "roj.gulerr@gmail.com";
-      _selectedSkinType = prefs.getString('skin_type') ?? "Karma";
-      _selectedSkinProblems = prefs.getStringList('skin_problems') ?? ["Sivilce", "Siyah Nokta"];
+      _selectedSkinType = prefs.getString('skin_type') ?? "Combination";
+      _selectedSkinProblems = prefs.getStringList('skin_problems') ?? ["Acne", "Blackheads"];
       
       // Profil fotoğrafını yükle
       final profileImagePath = prefs.getString('profile_image_path');
@@ -149,7 +149,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
     } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-          content: Text('Fotoğraf seçilirken hata oluştu: $e'),
+          content: Text('Error selecting photo: $e'),
           backgroundColor: Colors.red,
         ),
       );
@@ -244,7 +244,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Profil Bilgileri',
+            'Profile Information',
                                 style: GoogleFonts.poppins(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -255,7 +255,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           
           // İsim
           _buildInfoField(
-            'İsim',
+            'Name',
             _name,
             Icons.person_outline,
           ),
@@ -263,7 +263,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           
           // E-posta
           _buildInfoField(
-            'E-posta',
+            'Email',
             _email,
             Icons.email_outlined,
                             ),
@@ -306,9 +306,9 @@ class _ProfilePageModernState extends State<ProfilePageModern>
               const SizedBox(width: 12),
               Expanded(
                 child: TextField(
-                  controller: label == 'İsim' ? _nameController : _emailController,
+                  controller: label == 'Name' ? _nameController : _emailController,
                   onChanged: (newValue) {
-                    if (label == 'İsim') {
+                    if (label == 'Name') {
                       setState(() {
                         _name = newValue;
                       });
@@ -320,7 +320,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
                       _saveEmail(newValue);
                     }
                   },
-                  keyboardType: label == 'E-posta' ? TextInputType.emailAddress : TextInputType.text,
+                  keyboardType: label == 'Email' ? TextInputType.emailAddress : TextInputType.text,
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: AppColors.textPrimary,
@@ -345,7 +345,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          '$label Düzenle',
+          '$label Edit',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -354,7 +354,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
         ),
         content: TextField(
           controller: controller,
-          keyboardType: label == 'E-posta' ? TextInputType.emailAddress : TextInputType.text,
+          keyboardType: label == 'Email' ? TextInputType.emailAddress : TextInputType.text,
           style: GoogleFonts.poppins(fontSize: 16),
           decoration: InputDecoration(
             border: OutlineInputBorder(
@@ -370,18 +370,18 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'İptal',
+              'Cancel',
               style: GoogleFonts.poppins(color: AppColors.textSecondary),
             ),
           ),
           TextButton(
             onPressed: () {
-              if (label == 'İsim') {
+              if (label == 'Name') {
                 setState(() {
                   _name = controller.text;
                 });
                 _saveName(controller.text);
-              } else if (label == 'E-posta') {
+              } else if (label == 'Email') {
                 setState(() {
                   _email = controller.text;
                 });
@@ -390,7 +390,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
               Navigator.pop(context);
             },
             child: Text(
-              'Kaydet',
+              'Save',
               style: GoogleFonts.poppins(color: AppColors.pink),
             ),
           ),
@@ -418,7 +418,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-            'Cilt Tipim',
+            'My Skin Type',
               style: GoogleFonts.poppins(
               fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -491,7 +491,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Cilt Tipi Seç',
+          'Select Skin Type',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -579,7 +579,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                'Cilt Sorunlarım',
+                'My Skin Problems',
                   style: GoogleFonts.poppins(
                   fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -595,7 +595,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Text(
-                    'Düzenle',
+                    'Edit',
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -638,7 +638,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Cilt Sorunları Seç',
+          'Select Skin Problems',
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -709,7 +709,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
               Navigator.pop(context);
             },
             child: Text(
-              'Tamam',
+              'OK',
               style: GoogleFonts.poppins(color: AppColors.pink),
             ),
           ),
@@ -735,7 +735,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
         child: Column(
           children: [
           _buildSettingsItem(
-            'Gizlilik',
+            'Privacy',
             Icons.privacy_tip_outlined,
             () {
               _showPrivacyDialog();
@@ -743,7 +743,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           ),
           _buildDivider(),
           _buildSettingsItem(
-            'Yardım & Destek',
+            'Help & Support',
             Icons.help_outline,
             () {
               _showHelpDialog();
@@ -759,7 +759,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           ),
           _buildDivider(),
           _buildSettingsItem(
-            'Çıkış Yap',
+            'Log Out',
             Icons.logout,
             () {
               _showLogoutDialog();
@@ -776,7 +776,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Gizlilik',
+          'Privacy',
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -784,7 +784,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
               ),
             ),
         content: Text(
-          'Gizlilik ayarları burada görüntülenecek.',
+          'Privacy settings will be displayed here.',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -794,7 +794,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Tamam',
+              'OK',
               style: GoogleFonts.poppins(color: AppColors.pink),
             ),
           ),
@@ -808,7 +808,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Yardım & Destek',
+          'Help & Support',
                           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -816,7 +816,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
                           ),
                         ),
         content: Text(
-          'Yardım ve destek bilgileri burada görüntülenecek.',
+          'Help and support information will be displayed here.',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -826,7 +826,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Tamam',
+              'OK',
               style: GoogleFonts.poppins(color: AppColors.pink),
             ),
           ),
@@ -846,7 +846,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
             CircularProgressIndicator(color: AppColors.pink),
             SizedBox(width: 20),
             Text(
-              'SkincareAPI test ediliyor...',
+              'Testing SkincareAPI...',
               style: GoogleFonts.poppins(fontSize: 16),
             ),
           ],
@@ -865,7 +865,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'SkincareAPI Test Sonucu',
+          'SkincareAPI Test Result',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -883,8 +883,8 @@ class _ProfilePageModernState extends State<ProfilePageModern>
             SizedBox(height: 16),
             Text(
               isConnected 
-                ? '✅ SkincareAPI bağlantısı başarılı!\n\nGerçek ürün verileri kullanılabilir.'
-                : '❌ SkincareAPI bağlantısı başarısız!\n\nMock veriler kullanılacak.',
+                ? '✅ SkincareAPI connection successful!\n\nReal product data available.'
+                : '❌ SkincareAPI connection failed!\n\nMock data will be used.',
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 color: AppColors.textSecondary,
@@ -897,7 +897,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Tamam',
+              'OK',
               style: GoogleFonts.poppins(color: AppColors.pink),
             ),
           ),
@@ -911,7 +911,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Çıkış Yap',
+          'Log Out',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -919,7 +919,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           ),
         ),
         content: Text(
-          'Hesabınızdan çıkış yapmak istediğinizden emin misiniz?',
+          'Are you sure you want to log out of your account?',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -929,7 +929,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'İptal',
+              'Cancel',
               style: GoogleFonts.poppins(color: AppColors.textSecondary),
             ),
           ),
@@ -939,7 +939,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
               // Çıkış yapma işlemi
             },
             child: Text(
-              'Çıkış Yap',
+              'Log Out',
               style: GoogleFonts.poppins(color: Colors.red),
             ),
           ),

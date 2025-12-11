@@ -42,7 +42,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'Gerçek zamanlı veri - API\'den çekildi',
+          'Real-time data - from API',
           style: GoogleFonts.poppins(),
         ),
         backgroundColor: AppColors.success,
@@ -66,7 +66,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           ),
         ),
         title: Text(
-          'Ürün Detayı',
+          'Product Details',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -227,7 +227,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             // Description
             if (widget.product.description != null) ...[
               _buildSection(
-                title: 'Açıklama',
+                title: 'Description',
                 content: widget.product.description!,
               ),
               const SizedBox(height: 24),
@@ -235,7 +235,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
             // Ingredients
             _buildSection(
-              title: 'İçerikler',
+              title: 'Ingredients',
               content: widget.product.formattedIngredients,
               isIngredients: true,
             ),
@@ -244,7 +244,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
             // Nutrition information
             _buildSection(
-              title: 'Besin Değerleri',
+              title: 'Nutrition Info',
               content: widget.product.formattedNutritionInfo,
             ),
 
@@ -253,7 +253,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             // Additional information
             if (widget.product.additionalInfo != null) ...[
               _buildSection(
-                title: 'Ek Bilgiler',
+                title: 'Additional Info',
                 content: _formatAdditionalInfo(widget.product.additionalInfo!),
               ),
               const SizedBox(height: 24),
@@ -262,7 +262,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             // Barcode information
             if (widget.product.barcode != null) ...[
               _buildSection(
-                title: 'Barkod',
+                title: 'Barcode',
                 content: widget.product.barcode!,
                 showCopyButton: true,
               ),
@@ -271,7 +271,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
             // Unit information
             if (widget.product.unit != null) ...[
-              _buildSection(title: 'Birim', content: widget.product.unit!),
+              _buildSection(title: 'Unit', content: widget.product.unit!),
               const SizedBox(height: 24),
             ],
 
@@ -279,7 +279,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             if (widget.product.additionalInfo != null &&
                 widget.product.additionalInfo!['source'] != null) ...[
               _buildSection(
-                title: 'Veri Kaynağı',
+                title: 'Data Source',
                 content: widget.product.additionalInfo!['source'],
               ),
               const SizedBox(height: 24),
@@ -288,7 +288,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             // Last updated
             if (widget.product.updatedAt != null) ...[
               _buildSection(
-                title: 'Son Güncelleme',
+                title: 'Last Updated',
                 content: _formatDate(widget.product.updatedAt!),
               ),
               const SizedBox(height: 24),
@@ -303,7 +303,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   child: ElevatedButton.icon(
                     onPressed: _showProductInfo,
                     icon: Icon(Icons.info_outline),
-                    label: Text('Bilgi'),
+                    label: Text('Info'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primary,
                       foregroundColor: Colors.white,
@@ -322,7 +322,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       _shareProduct();
                     },
                     icon: Icon(Icons.share),
-                    label: Text('Paylaş'),
+                    label: Text('Share'),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.primary,
                       side: BorderSide(color: AppColors.primary),
@@ -404,7 +404,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       }
     });
     return formattedInfo.isEmpty
-        ? 'Ek bilgi bulunmuyor'
+        ? 'No additional info'
         : formattedInfo.join('\n');
   }
 
@@ -418,7 +418,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     // In a real app, you would use a clipboard plugin
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Kopyalandı: $text', style: GoogleFonts.poppins()),
+        content: Text('Copied: $text', style: GoogleFonts.poppins()),
         backgroundColor: AppColors.success,
       ),
     );
@@ -428,19 +428,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   void _shareProduct() {
     String shareText = '${widget.product.name}\n';
     if (widget.product.brand != null) {
-      shareText += 'Marka: ${widget.product.brand}\n';
+      shareText += 'Brand: ${widget.product.brand}\n';
     }
     if (widget.product.description != null) {
-      shareText += 'Açıklama: ${widget.product.description}\n';
+      shareText += 'Description: ${widget.product.description}\n';
     }
-    shareText += 'İçerikler: ${widget.product.formattedIngredients}\n';
-    shareText += 'Besin Değerleri: ${widget.product.formattedNutritionInfo}';
+    shareText += 'Ingredients: ${widget.product.formattedIngredients}\n';
+    shareText += 'Nutrition Info: ${widget.product.formattedNutritionInfo}';
 
     // In a real app, you would use a share plugin
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'Paylaşım özelliği yakında eklenecek',
+          'Share feature coming soon',
           style: GoogleFonts.poppins(),
         ),
         backgroundColor: AppColors.primary,

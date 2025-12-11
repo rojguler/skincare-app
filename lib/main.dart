@@ -61,7 +61,7 @@ Future<void> _initializeServices() async {
     logger.info('Firebase initialized');
 
     // Initialize date formatting
-    await initializeDateFormatting('tr_TR', null);
+    await initializeDateFormatting('en_US', null);
     logger.info('Date formatting initialized');
     
     // Initialize Hive with web compatibility
@@ -112,7 +112,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Cilt Bakım Takip',
+      title: 'Skincare Tracker',
       theme: ThemeData(
         fontFamily: 'Poppins',
         scaffoldBackgroundColor: AppColors.background,
@@ -246,23 +246,23 @@ class _HomeShellState extends State<HomeShell> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_rounded, size: 24),
-              label: 'Ana Sayfa',
+              label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month_rounded, size: 24),
-              label: 'Takvim',
+              label: 'Calendar',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart_rounded, size: 24),
-              label: 'İstatistikler',
+              label: 'Statistics',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.check_circle_rounded, size: 24),
-              label: 'Alışkanlıklar',
+              label: 'Habits',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_rounded, size: 24),
-              label: 'Profil',
+              label: 'Profile',
             ),
           ],
         ),

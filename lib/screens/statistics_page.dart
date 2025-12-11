@@ -118,11 +118,11 @@ class _UserStatsPageState extends State<UserStatsPage>
   Future<void> _loadUserProfile() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      userSkinType = prefs.getString('skin_type') ?? 'Karma';
+      userSkinType = prefs.getString('skin_type') ?? 'Combination';
       userSkinProblems = prefs.getStringList('skin_problems') ?? [];
     } catch (e) {
       // Hata durumunda varsayılan değerler
-      userSkinType = 'Karma';
+      userSkinType = 'Combination';
       userSkinProblems = [];
     }
   }
@@ -271,7 +271,7 @@ class _UserStatsPageState extends State<UserStatsPage>
 
     if (entries.isEmpty) {
       recommendations.add(
-        'Henüz kayıt yok. İlk kaydını oluştur ve istatistiklerini gör!',
+        'No entries yet. Create your first entry to see your stats!',
       );
       return recommendations;
     }
@@ -291,7 +291,7 @@ class _UserStatsPageState extends State<UserStatsPage>
 
         if (mostUsedProduct.value >= 5) {
           recommendations.add(
-            '${mostUsedProduct.key} ürününü ${mostUsedProduct.value} kez kullanmışsın. Bu ürün rutininin vazgeçilmezi!',
+            'You used ${mostUsedProduct.key} ${mostUsedProduct.value} times. This product is a staple in your routine!',
           );
         }
       }
@@ -303,11 +303,11 @@ class _UserStatsPageState extends State<UserStatsPage>
 
       if (averageEntriesPerWeek < 3) {
         recommendations.add(
-          'Haftada ortalama ${averageEntriesPerWeek.toStringAsFixed(1)} kayıt yapıyorsun. Daha düzenli olmak için hatırlatıcılar kurabilirsin!',
+          'You are averaging ${averageEntriesPerWeek.toStringAsFixed(1)} entries per week. set reminders to be more consistent!',
         );
       } else {
         recommendations.add(
-          'Harika! Haftada ortalama ${averageEntriesPerWeek.toStringAsFixed(1)} kayıt yapıyorsun. Bu düzenli rutin cildini güzelleştiriyor!',
+          'Great! You are averaging ${averageEntriesPerWeek.toStringAsFixed(1)} entries per week. This consistent routine is improving your skin!',
         );
       }
     }
@@ -319,19 +319,19 @@ class _UserStatsPageState extends State<UserStatsPage>
   String _getDayName(int weekday) {
     switch (weekday) {
       case 1:
-        return 'Pzt';
+        return 'Mon';
       case 2:
-        return 'Sal';
+        return 'Tue';
       case 3:
-        return 'Çar';
+        return 'Wed';
       case 4:
-        return 'Per';
+        return 'Thu';
       case 5:
-        return 'Cum';
+        return 'Fri';
       case 6:
-        return 'Cmt';
+        return 'Sat';
       case 7:
-        return 'Paz';
+        return 'Sun';
       default:
         return '';
     }
@@ -377,7 +377,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                   ),
                 ),
                 title: Text(
-                  'İstatistikler',
+                  'Statistics',
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -413,7 +413,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                         _hapticFeedback();
                         _loadData();
                       },
-                      tooltip: 'Yenile',
+                      tooltip: 'Refresh',
                     ),
                   ),
                 ],
@@ -468,7 +468,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                         children: [
                           Expanded(
                             child: _buildStatCard(
-                              title: 'Toplam Kayıt',
+                              title: 'Total Entries',
                               value: entries.length.toString(),
                               icon: Icons.note,
                               color: AppColors.pink,
@@ -477,7 +477,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                           const SizedBox(width: 12),
                           Expanded(
                             child: _buildStatCard(
-                              title: 'Kullanılan Ürün',
+                              title: 'Products Used',
                               value: productUsage.length.toString(),
                               icon: Icons.local_pharmacy,
                               color: AppColors.marron,
@@ -492,7 +492,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                         children: [
                           Expanded(
                             child: _buildStatCard(
-                              title: 'En Aktif Gün',
+                              title: 'Most Active Day',
                               value: dailyEntries.isNotEmpty
                                   ? dailyEntries.entries
                                         .reduce(
@@ -509,7 +509,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                           const SizedBox(width: 12),
                           Expanded(
                             child: _buildStatCard(
-                              title: 'Ortalama/Hafta',
+                              title: 'Average/Week',
                               value: weeklyActivity.isNotEmpty
                                   ? (weeklyActivity.values.reduce(
                                               (a, b) => a + b,
@@ -571,7 +571,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  'Akıllı Öneriler',
+                                  'Smart Recommendations',
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -656,7 +656,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  'Cilt Tipi Analizi',
+                                  'Skin Type Analysis',
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -712,7 +712,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                                 ),
                                                 const SizedBox(height: 8),
                                                 Text(
-                                                  'Henüz cilt tipi verisi yok',
+                                                  'No skin type data yet',
                                                   style: GoogleFonts.poppins(
                                                     color:
                                                         AppColors.textSecondary,
@@ -734,11 +734,11 @@ class _UserStatsPageState extends State<UserStatsPage>
                                 spacing: 12,
                                 runSpacing: 8,
                                 children: [
-                                  _buildColorLegend('Kuru', AppColors.yellow),
-                                  _buildColorLegend('Yağlı', AppColors.pink),
-                                  _buildColorLegend('Hassas', AppColors.marron),
+                                  _buildColorLegend('Dry', AppColors.yellow),
+                                  _buildColorLegend('Oily', AppColors.pink),
+                                  _buildColorLegend('Sensitive', AppColors.marron),
                                   _buildColorLegend(
-                                    'Karma',
+                                    'Combination',
                                     AppColors.yellow.withOpacity(0.8),
                                   ),
                                   _buildColorLegend(
@@ -746,7 +746,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                     AppColors.pink.withOpacity(0.8),
                                   ),
                                   _buildColorLegend(
-                                    'Akneli',
+                                    'Acne-prone',
                                     AppColors.marron.withOpacity(0.8),
                                   ),
                                 ],
@@ -792,7 +792,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  'Ürün Etkinliği',
+                                  'Product Effectiveness',
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -928,7 +928,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                         ),
                                         const SizedBox(height: 8),
                                         Text(
-                                          'Henüz ürün kullanım verisi yok',
+                                          'No product usage data yet',
                                           style: GoogleFonts.poppins(
                                             color: AppColors.textSecondary,
                                             fontSize: 14,
@@ -977,7 +977,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  'Haftalık Aktivite',
+                                  'Weekly Activity',
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -1135,7 +1135,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
-                                      'Düşük Aktivite',
+                                      'Low Activity',
                                       style: GoogleFonts.poppins(
                                         fontSize: 11,
                                         color: AppColors.textSecondary,
@@ -1155,7 +1155,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
-                                      'Yüksek Aktivite',
+                                      'High Activity',
                                       style: GoogleFonts.poppins(
                                         fontSize: 11,
                                         color: AppColors.textSecondary,
@@ -1205,7 +1205,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  'En Çok Kullanılan Ürünler',
+                                  'Most Used Products',
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -1299,7 +1299,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                                             ),
                                                           ),
                                                           Text(
-                                                            '${entry.value} kez kullanıldı',
+                                                            '${entry.value} times used',
                                                             style: GoogleFonts.poppins(
                                                               fontSize: 11,
                                                               color: AppColors
@@ -1359,7 +1359,7 @@ class _UserStatsPageState extends State<UserStatsPage>
                                         ),
                                         const SizedBox(height: 8),
                                         Text(
-                                          'Henüz ürün kullanım verisi yok',
+                                          'No product usage data yet',
                                           style: GoogleFonts.poppins(
                                             color: AppColors.textSecondary,
                                             fontSize: 14,
@@ -1448,17 +1448,17 @@ class _UserStatsPageState extends State<UserStatsPage>
 
   Color _getSkinTypeColor(String skinType) {
     switch (skinType) {
-      case 'Kuru':
+      case 'Dry':
         return AppColors.yellow;
-      case 'Yağlı':
+      case 'Oily':
         return AppColors.pink;
-      case 'Hassas':
+      case 'Sensitive':
         return AppColors.marron;
-      case 'Karma':
+      case 'Combination':
         return AppColors.yellow.withOpacity(0.8);
       case 'Normal':
         return AppColors.pink.withOpacity(0.8);
-      case 'Akneli':
+      case 'Acne-prone':
         return AppColors.marron.withOpacity(0.8);
       default:
         return AppColors.pink;
@@ -1501,13 +1501,13 @@ class _UserStatsPageState extends State<UserStatsPage>
     switch (product) {
       case 'Serum':
         return Icons.water_drop;
-      case 'Tonik':
+      case 'Toner':
         return Icons.waves;
-      case 'Güneş Kremi':
+      case 'Sunscreen':
         return Icons.wb_sunny;
-      case 'Nemlendirici':
+      case 'Moisturizer':
         return Icons.spa;
-      case 'Maske':
+      case 'Mask':
         return Icons.face;
       case 'Peeling':
         return Icons.auto_fix_high;

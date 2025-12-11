@@ -27,248 +27,248 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
     try {
       // Quiz verilerini manuel olarak oluştur
       final quiz = SkinQuiz(
-        title: "Cilt Tipi Belirleme Testi",
+        title: "Skin Type Quiz",
         description:
-            "Cildinizin tipini belirlemek için aşağıdaki soruları yanıtlayın",
+            "Answer the questions below to determine your skin type",
         questions: [
           QuizQuestion(
             id: "q1",
-            question: "Gün içinde yüzündeki parlama/yağlanma durumu nasıl?",
+            question: "How does your face feel/look during the day?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Tüm yüzde hızlı parlama/yağlanma",
-                scoreMap: {"yagli": 2},
+                text: "Shiny/oily all over the face",
+                scoreMap: {"oily": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Sadece T bölgesinde parlama, yanaklar normal/kuru",
-                scoreMap: {"karma": 2},
+                text: "Shiny only in T-zone, cheeks are normal/dry",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "Hafif parlama var ama kontrol altında",
+                text: "Slight shine but controlled",
                 scoreMap: {"normal": 1},
               ),
               QuizOption(
                 id: "d",
-                text: "Parlama yok, gün içinde kuruluk hissi oluyor",
-                scoreMap: {"kuru": 2},
+                text: "No shine, feels dry during the day",
+                scoreMap: {"dry": 2},
               ),
             ],
           ),
           QuizQuestion(
             id: "q2",
-            question: "Yüzünü temizledikten sonra cildin nasıl hissediliyor?",
+            question: "How does your skin feel after cleansing?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Kısa sürede tekrar yağlanıyor",
-                scoreMap: {"yagli": 2},
+                text: "Gets oily again quickly",
+                scoreMap: {"oily": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Gergin/kurumuş hissediyorum",
-                scoreMap: {"kuru": 2},
+                text: "Details tight/dry",
+                scoreMap: {"dry": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "T bölgesi yağlı, yanaklar gergin",
-                scoreMap: {"karma": 2},
+                text: "T-zone oily, cheeks tight",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "d",
-                text: "Dengeli ve rahat",
+                text: "Balanced and comfortable",
                 scoreMap: {"normal": 1},
               ),
               QuizOption(
                 id: "e",
-                text: "Yanma/batma oluyor",
-                scoreMap: {"hassas": 2},
+                text: "Burning/stinging sensation",
+                scoreMap: {"sensitive": 2},
               ),
             ],
           ),
           QuizQuestion(
             id: "q3",
-            question: "Gözenek görünümü en çok hangisine benziyor?",
+            question: "Which describes your pores best?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Geniş ve belirgin",
-                scoreMap: {"yagli": 2},
+                text: "Large and visible",
+                scoreMap: {"oily": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "T bölgede geniş, yanaklarda küçük",
-                scoreMap: {"karma": 2},
+                text: "Large in T-zone, small on cheeks",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "Küçük/neredeyse görünmez",
-                scoreMap: {"kuru": 2},
+                text: "Small/barely visible",
+                scoreMap: {"dry": 2},
               ),
               QuizOption(
                 id: "d",
-                text: "Orta boy, çok dikkat çekmiyor",
+                text: "Medium size, not very noticeable",
                 scoreMap: {"normal": 1},
               ),
             ],
           ),
           QuizQuestion(
             id: "q4",
-            question: "Sivilce/komedon (siyah-beyaz nokta) sıklığı nasıl?",
+            question: "How frequent are acne/comedones (black/whiteheads)?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Sık ve iltihaplı ataklar yaşıyorum",
-                scoreMap: {"akneli": 2, "yagli": 1},
+                text: "Frequent and inflamed breakouts",
+                scoreMap: {"acne_prone": 2, "oily": 1},
               ),
               QuizOption(
                 id: "b",
-                text: "Ara sıra oluyor",
-                scoreMap: {"akneli": 1},
+                text: "Occasional breakouts",
+                scoreMap: {"acne_prone": 1},
               ),
-              QuizOption(id: "c", text: "Nadiren", scoreMap: {"normal": 1}),
+              QuizOption(id: "c", text: "Rarely", scoreMap: {"normal": 1}),
               QuizOption(
                 id: "d",
-                text: "Özellikle T bölgesinde siyah/beyaz noktalar",
-                scoreMap: {"akneli": 2, "karma": 1},
+                text: "Black/whiteheads especially in T-zone",
+                scoreMap: {"acne_prone": 2, "combination": 1},
               ),
             ],
           ),
           QuizQuestion(
             id: "q5",
             question:
-                "Kızarıklık, yanma veya batma tetikleyen durumlar var mı?",
+                "Any conditions triggering redness, burning or stinging?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Parfüm/alkol gibi bazı ürünlerde yanma-batma",
-                scoreMap: {"hassas": 2},
+                text: "Burning-stinging with some products like perfume/alcohol",
+                scoreMap: {"sensitive": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Sıcak/soğuk/rüzgarda anında kızarma",
-                scoreMap: {"hassas": 2},
+                text: "Instant redness in hot/cold/wind",
+                scoreMap: {"sensitive": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "Belirgin tetikleyici yok",
+                text: "No obvious triggers",
                 scoreMap: {"normal": 1},
               ),
             ],
           ),
           QuizQuestion(
             id: "q6",
-            question: "Pul pul dökülme/kuruluk yaşıyor musun?",
+            question: "Do you experience flakiness/dryness?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Sık sık ve belirgin",
-                scoreMap: {"kuru": 2},
+                text: "Frequent and significant",
+                scoreMap: {"dry": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Bazen/mevsimsel",
-                scoreMap: {"kuru": 1},
+                text: "Sometimes/seasonal",
+                scoreMap: {"dry": 1},
               ),
-              QuizOption(id: "c", text: "Hayır", scoreMap: {"normal": 1}),
+              QuizOption(id: "c", text: "No", scoreMap: {"normal": 1}),
             ],
           ),
           QuizQuestion(
             id: "q7",
-            question: "Makyajın gün içinde nasıl davranıyor? (yapıyorsan)",
+            question: "How does your makeup behavior during the day? (if applicable)",
             options: [
               QuizOption(
                 id: "a",
-                text: "Hızla akıyor/bozuluyor",
-                scoreMap: {"yagli": 2},
+                text: "Slides off/fades quickly",
+                scoreMap: {"oily": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Kuru bölgelerde parçalanıyor/çizgilere doluyor",
-                scoreMap: {"kuru": 2},
+                text: "Cracks/settles into lines in dry areas",
+                scoreMap: {"dry": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "T bölgesi parlarken yanaklar mat kalıyor",
-                scoreMap: {"karma": 2},
+                text: "T-zone shines while cheeks stay matte",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "d",
-                text: "Genelde dengeli",
+                text: "Generally balanced",
                 scoreMap: {"normal": 1},
               ),
             ],
           ),
           QuizQuestion(
             id: "q8",
-            question: "Günün sonunda yüzünün genel durumu en çok hangisi?",
+            question: "Which describes your skin status best at the end of the day?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Parlak/yağlı his",
-                scoreMap: {"yagli": 2},
+                text: "Shiny/oily feeling",
+                scoreMap: {"oily": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "T bölgesi yağlı, yanaklar kuru",
-                scoreMap: {"karma": 2},
+                text: "T-zone oily, cheeks dry",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "Gergin/kuru his",
-                scoreMap: {"kuru": 2},
+                text: "Tight/dry feeling",
+                scoreMap: {"dry": 2},
               ),
-              QuizOption(id: "d", text: "Dengeli", scoreMap: {"normal": 1}),
+              QuizOption(id: "d", text: "Balanced", scoreMap: {"normal": 1}),
             ],
           ),
           QuizQuestion(
             id: "q9",
-            question: "Kılcal damar görünürlüğü (şeffaf, kızaran cilt) var mı?",
+            question: "Are there visible capillaries (transparent, reddening skin)?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Evet, kolay kızarma ve kılcal damar görünürlüğü",
-                scoreMap: {"hassas": 2},
+                text: "Yes, easily reddens and visible capillaries",
+                scoreMap: {"sensitive": 2},
               ),
-              QuizOption(id: "b", text: "Hayır", scoreMap: {"normal": 1}),
+              QuizOption(id: "b", text: "No", scoreMap: {"normal": 1}),
             ],
           ),
           QuizQuestion(
             id: "q10",
             question:
-                "Hormonal dönemlerde (adet/stres) sivilcelenme artıyor mu?",
+                "Does acne increase during hormonal periods (period/stress)?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Evet, belirgin artış oluyor",
-                scoreMap: {"akneli": 2},
+                text: "Yes, significant increase",
+                scoreMap: {"acne_prone": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Hayır/emin değilim",
+                text: "No/not sure",
                 scoreMap: {"normal": 1},
               ),
             ],
           ),
           QuizQuestion(
             id: "q11",
-            question: "Cildinin genel dokusu ve kalınlığı nasıl?",
+            question: "How is your skin's general texture and thickness?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Daha kalın, parlak görünümlü",
-                scoreMap: {"yagli": 1},
+                text: "Thicker, shiny look",
+                scoreMap: {"oily": 1},
               ),
               QuizOption(
                 id: "b",
-                text: "İnce, hassas görünümlü",
-                scoreMap: {"hassas": 1, "kuru": 1},
+                text: "Thin, sensitive look",
+                scoreMap: {"sensitive": 1, "dry": 1},
               ),
               QuizOption(
                 id: "c",
-                text: "Yumuşak ve pürüzsüz",
+                text: "Soft and smooth",
                 scoreMap: {"normal": 1},
               ),
             ],
@@ -276,21 +276,21 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
           QuizQuestion(
             id: "q12",
             question:
-                "Cheeks vs T-zone: aşağıdakilerden hangisi seni daha iyi anlatır?",
+                "Cheeks vs T-zone: which one describes you better?",
             options: [
               QuizOption(
                 id: "a",
-                text: "Cheeks kuru/normal, T-zone yağlı",
-                scoreMap: {"karma": 2},
+                text: "Cheeks dry/normal, T-zone oily",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "b",
-                text: "Cheeks yağlı, T-zone normal/kuru",
-                scoreMap: {"karma": 2},
+                text: "Cheeks oily, T-zone normal/dry",
+                scoreMap: {"combination": 2},
               ),
               QuizOption(
                 id: "c",
-                text: "Her yer benzer dengede",
+                text: "Everywhere balanced similarly",
                 scoreMap: {"normal": 1},
               ),
             ],
@@ -299,50 +299,50 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
         results: QuizResults(
           rules: [
             QuizRule(
-              condition: "yagli >= 8",
-              skinType: "Yağlı Cilt",
+              condition: "oily >= 8",
+              skinType: "Oily Skin",
               description:
-                  "Cildiniz yağ üretiminde fazla aktif. Gözenekler geniş ve parlama sık görülür.",
+                  "Your skin is overactive in oil production. Large pores and shine are common.",
               icon: "💧",
               color: "pink",
             ),
             QuizRule(
-              condition: "kuru >= 6",
-              skinType: "Kuru Cilt",
+              condition: "dry >= 6",
+              skinType: "Dry Skin",
               description:
-                  "Cildiniz nem eksikliği yaşıyor. Pul pul dökülme ve gerginlik hissi yaygın.",
+                  "Your skin lacks moisture. Flakiness and tightness are common.",
               icon: "🌵",
               color: "orange",
             ),
             QuizRule(
-              condition: "karma >= 6",
-              skinType: "Karma Cilt",
+              condition: "combination >= 6",
+              skinType: "Combination Skin",
               description:
-                  "T bölgeniz yağlı, yanaklarınız kuru. Farklı bölgeler için farklı bakım gerekir.",
+                  "Your T-zone is oily, cheeks are dry. Different areas need different care.",
               icon: "🎭",
               color: "purple",
             ),
             QuizRule(
-              condition: "hassas >= 4",
-              skinType: "Hassas Cilt",
+              condition: "sensitive >= 4",
+              skinType: "Sensitive Skin",
               description:
-                  "Cildiniz çevresel faktörlere karşı hassas. Kızarıklık ve yanma sık görülür.",
+                  "Your skin is sensitive to environmental factors. Redness and stinging are common.",
               icon: "🌸",
               color: "red",
             ),
             QuizRule(
-              condition: "akneli >= 4",
-              skinType: "Akneli Cilt",
+              condition: "acne_prone >= 4",
+              skinType: "Acne-Prone Skin",
               description:
-                  "Sivilce ve komedonlarla mücadele ediyorsunuz. Özel bakım rutini gerekli.",
+                  "You struggle with acne and comedones. A special care routine is necessary.",
               icon: "🔴",
               color: "deepOrange",
             ),
             QuizRule(
               condition: "default",
-              skinType: "Normal Cilt",
+              skinType: "Normal Skin",
               description:
-                  "Cildiniz dengeli ve sağlıklı. Mevcut rutininizi koruyabilirsiniz.",
+                  "Your skin is balanced and healthy. You can maintain your current routine.",
               icon: "✨",
               color: "green",
             ),
@@ -356,7 +356,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
       });
     } catch (e) {
       setState(() {
-        error = 'Quiz yüklenirken hata oluştu: $e';
+        error = 'Error loading quiz: $e';
         isLoading = false;
       });
     }
@@ -461,7 +461,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
               CircularProgressIndicator(color: AppColors.pink),
               const SizedBox(height: 16),
               Text(
-                'Quiz yükleniyor...',
+                'Loading quiz...',
                 style: TextStyle(color: AppColors.textPrimary, fontSize: 16),
               ),
             ],
@@ -493,7 +493,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                     backgroundColor: AppColors.pink,
                     foregroundColor: AppColors.white,
                   ),
-                  child: const Text('Tekrar Dene'),
+                  child: const Text('Try Again'),
                 ),
               ],
             ),
@@ -505,7 +505,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
     if (quiz == null) {
       return Scaffold(
         backgroundColor: AppColors.background,
-        body: const Center(child: Text('Quiz bulunamadı')),
+        body: const Center(child: Text('Quiz not found')),
       );
     }
 
@@ -592,7 +592,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Soru ${quizState.currentQuestionIndex + 1}/${quiz!.questions.length}',
+                                'Question ${quizState.currentQuestionIndex + 1}/${quiz!.questions.length}',
                                 style: GoogleFonts.poppins(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
@@ -601,7 +601,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                               ),
                               const SizedBox(height: 2),
                               Text(
-                                'Cilt tipinizi belirlemek için devam edin',
+                                'Continue to determine your skin type',
                                 style: GoogleFonts.poppins(
                                   fontSize: 11,
                                   color: AppColors.textSecondary,
@@ -670,7 +670,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'Soru ${quizState.currentQuestionIndex + 1}',
+                          'Question ${quizState.currentQuestionIndex + 1}',
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
@@ -815,8 +815,8 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                       Text(
                         quizState.currentQuestionIndex ==
                                 quiz!.questions.length - 1
-                            ? 'Sonucu Gör'
-                            : 'Devam Et',
+                            ? 'See Result'
+                            : 'Continue',
                         style: GoogleFonts.poppins(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
@@ -913,7 +913,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Tebrikler! 🎉',
+                            'Congratulations! 🎉',
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
@@ -922,7 +922,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            'Cilt tipiniz başarıyla belirlendi',
+                            'Your skin type has been determined successfully',
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                               color: AppColors.textSecondary,
@@ -1051,7 +1051,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                                   ),
                                   const SizedBox(width: 6),
                                   Text(
-                                    'Skor Detayları',
+                                    'Score Details',
                                     style: GoogleFonts.poppins(
                                       color: AppColors.textPrimary,
                                       fontSize: 12,
@@ -1136,7 +1136,7 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
                   onPressed: _restartQuiz,
                   icon: const Icon(Icons.refresh, size: 18),
                   label: Text(
-                    'Quiz\'i Tekrar Başlat',
+                    'Restart Quiz',
                     style: GoogleFonts.poppins(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
@@ -1163,16 +1163,16 @@ class _SkinQuizPageState extends State<SkinQuizPage> {
   // Cilt tipi adını getir
   String _getSkinTypeName(String key) {
     switch (key) {
-      case 'yagli':
-        return 'Yağlı';
-      case 'kuru':
-        return 'Kuru';
-      case 'karma':
-        return 'Karma';
-      case 'hassas':
-        return 'Hassas';
-      case 'akneli':
-        return 'Akneli';
+      case 'oily':
+        return 'Oily';
+      case 'dry':
+        return 'Dry';
+      case 'combination':
+        return 'Combination';
+      case 'sensitive':
+        return 'Sensitive';
+      case 'acne_prone':
+        return 'Acne-Prone';
       case 'normal':
         return 'Normal';
       default:

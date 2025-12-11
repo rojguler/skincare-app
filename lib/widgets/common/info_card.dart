@@ -155,7 +155,7 @@ class InfoDetailCard extends StatelessWidget {
 
           // Nasıl çalışır bölümü
           const Text(
-            'Nasıl Çalışır',
+            'How it Works',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,

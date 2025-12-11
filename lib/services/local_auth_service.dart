@@ -20,12 +20,12 @@ class LocalAuthService {
         
         // E-posta zaten kayıtlı mı kontrol et
         if (users.containsKey(email)) {
-          throw Exception('Bu e-posta adresi zaten kullanımda!');
+          throw Exception('This email address is already in use!');
         }
         
         // Şifre doğrulama
         if (password.length < 6) {
-          throw Exception('Şifre en az 6 karakter olmalı!');
+          throw Exception('Password must be at least 6 characters!');
         }
 
         // Şifreyi hashle
@@ -49,12 +49,12 @@ class LocalAuthService {
         
         // E-posta zaten kayıtlı mı kontrol et
         if (usersBox.containsKey(email)) {
-          throw Exception('Bu e-posta adresi zaten kullanımda!');
+          throw Exception('This email address is already in use!');
         }
 
         // Şifre doğrulama
         if (password.length < 6) {
-          throw Exception('Şifre en az 6 karakter olmalı!');
+          throw Exception('Password must be at least 6 characters!');
         }
 
         // Şifreyi hashle
@@ -89,7 +89,7 @@ class LocalAuthService {
 
         // Kullanıcı var mı kontrol et
         if (!users.containsKey(email)) {
-          throw Exception('Bu e-posta adresi ile kayıtlı kullanıcı bulunamadı.');
+          throw Exception('No user found with this email address.');
         }
 
         // Kullanıcı bilgilerini al
@@ -99,7 +99,7 @@ class LocalAuthService {
         // Şifreyi doğrula
         final hashedPassword = _hashPassword(password);
         if (hashedPassword != storedHashedPassword) {
-          throw Exception('Şifre hatalı!');
+          throw Exception('Incorrect password!');
         }
 
         // Giriş başarılı, current user'ı kaydet
@@ -112,7 +112,7 @@ class LocalAuthService {
 
         // Kullanıcı var mı kontrol et
         if (!usersBox.containsKey(email)) {
-          throw Exception('Bu e-posta adresi ile kayıtlı kullanıcı bulunamadı.');
+          throw Exception('No user found with this email address.');
         }
 
         // Kullanıcı bilgilerini al
@@ -122,7 +122,7 @@ class LocalAuthService {
         // Şifreyi doğrula
         final hashedPassword = _hashPassword(password);
         if (hashedPassword != storedHashedPassword) {
-          throw Exception('Şifre hatalı!');
+          throw Exception('Incorrect password!');
         }
 
         // Giriş başarılı, current user'ı kaydet

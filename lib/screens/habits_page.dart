@@ -30,92 +30,92 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
   Map<String, List<Map<String, dynamic>>> habits = {
     'daily': [
       {
-        'text': 'Yüz Yıkama',
+        'text': 'Face Wash',
         'completed': false,
-        'description': 'Sabah ve akşam yüzünü temizle',
+        'description': 'Cleanse face morning and evening',
         'icon': Icons.cleaning_services_outlined.codePoint,
-        'time': 'Sabah & Akşam',
+        'time': 'Morning & Evening',
       },
       {
-        'text': 'Bol Su İç',
+        'text': 'Drink Water',
         'completed': false,
-        'description': 'Günde en az 8 bardak su iç',
+        'description': 'Drink at least 8 glasses of water a day',
         'icon': Icons.water_drop_outlined.codePoint,
-        'time': 'Gün boyu',
+        'time': 'All day',
       },
       {
-        'text': 'Güneş Kremi',
+        'text': 'Sunscreen',
         'completed': false,
-        'description': 'Güneşe çıkmadan önce mutlaka sür',
+        'description': 'Apply before going out in the sun',
         'icon': Icons.wb_sunny_outlined.codePoint,
-        'time': 'Sabah',
+        'time': 'Morning',
       },
       {
-        'text': 'Gece Bakımı',
+        'text': 'Night Care',
         'completed': false,
-        'description': 'Yatmadan önce serum ve nemlendirici',
+        'description': 'Serum and moisturizer before bed',
         'icon': Icons.nightlight_outlined.codePoint,
-        'time': 'Akşam',
+        'time': 'Evening',
       },
     ],
     'weekly': [
       {
-        'text': 'Yüz Maskesi',
+        'text': 'Face Mask',
         'completed': false,
-        'description': 'Haftada 2-3 kez maske yap',
+        'description': 'Apply mask 2-3 times a week',
         'icon': Icons.face_outlined.codePoint,
-        'time': 'Haftada 2-3 kez',
+        'time': '2-3 times a week',
       },
       {
-        'text': 'Tırnak Bakımı',
+        'text': 'Nail Care',
         'completed': false,
-        'description': 'Tırnaklarını kes ve bakım yap',
+        'description': 'Trim and care for nails',
         'icon': Icons.brush_outlined.codePoint,
-        'time': 'Haftada 1 kez',
+        'time': 'Once a week',
       },
       {
-        'text': 'Saç Bakımı',
+        'text': 'Hair Care',
         'completed': false,
-        'description': 'Saç maskesi veya yağ uygula',
+        'description': 'Apply hair mask or oil',
         'icon': Icons.face_retouching_natural_outlined.codePoint,
-        'time': 'Haftada 1 kez',
+        'time': 'Once a week',
       },
       {
-        'text': 'Vücut Peeling',
+        'text': 'Body Scrub',
         'completed': false,
-        'description': 'Vücudunu ölü derilerden arındır',
+        'description': 'Exfoliate dead skin from body',
         'icon': Icons.spa_outlined.codePoint,
-        'time': 'Haftada 1 kez',
+        'time': 'Once a week',
       },
     ],
     'monthly': [
       {
-        'text': 'Dermatolog Kontrolü',
+        'text': 'Dermatologist Check',
         'completed': false,
-        'description': 'Cilt sağlığın için düzenli kontrol',
+        'description': 'Regular checkup for skin health',
         'icon': Icons.medical_services_outlined.codePoint,
-        'time': 'Ayda 1 kez',
+        'time': 'Once a month',
       },
       {
-        'text': 'Ürün Değerlendirmesi',
+        'text': 'Product Review',
         'completed': false,
-        'description': 'Kullandığın ürünleri değerlendir',
+        'description': 'Review the products you use',
         'icon': Icons.rate_review_outlined.codePoint,
-        'time': 'Ayda 1 kez',
+        'time': 'Once a month',
       },
       {
-        'text': 'Rutin Güncelleme',
+        'text': 'Routine Update',
         'completed': false,
-        'description': 'Rutinini mevsime göre güncelle',
+        'description': 'Update routine according to season',
         'icon': Icons.update_outlined.codePoint,
-        'time': 'Ayda 1 kez',
+        'time': 'Once a month',
       },
       {
-        'text': 'Yeni Ürün Deneme',
+        'text': 'Try New Product',
         'completed': false,
-        'description': 'Yeni bir ürün dene ve test et',
+        'description': 'Try and test a new product',
         'icon': Icons.science_outlined.codePoint,
-        'time': 'Ayda 1 kez',
+        'time': 'Once a month',
       },
     ],
   };
@@ -165,32 +165,32 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
     setState(() {
       habits['daily'] = [
         {
-          'text': 'Yüz Yıkama',
+          'text': 'Face Wash',
           'completed': false,
-          'description': 'Sabah ve akşam yüzünü temizle',
+          'description': 'Cleanse face morning and evening',
           'icon': Icons.cleaning_services_outlined.codePoint,
-          'time': 'Sabah & Akşam',
+          'time': 'Morning & Evening',
         },
         {
-          'text': 'Bol Su İç',
+          'text': 'Drink Water',
           'completed': false,
-          'description': 'Günde en az 8 bardak su iç',
+          'description': 'Drink at least 8 glasses of water a day',
           'icon': Icons.water_drop_outlined.codePoint,
-          'time': 'Gün boyu',
+          'time': 'All day',
         },
         {
-          'text': 'Güneş Kremi',
+          'text': 'Sunscreen',
           'completed': false,
-          'description': 'Güneşe çıkmadan önce mutlaka sür',
+          'description': 'Apply before going out in the sun',
           'icon': Icons.wb_sunny_outlined.codePoint,
-          'time': 'Sabah',
+          'time': 'Morning',
         },
         {
-          'text': 'Gece Bakımı',
+          'text': 'Night Care',
           'completed': false,
-          'description': 'Yatmadan önce serum ve nemlendirici',
+          'description': 'Serum and moisturizer before bed',
           'icon': Icons.nightlight_outlined.codePoint,
-          'time': 'Akşam',
+          'time': 'Evening',
         },
       ];
     });
@@ -218,11 +218,11 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
               .map((habit) {
                 if (habit is Map) {
                   return {
-                    'text': habit['text'] ?? 'Alışkanlık',
+                    'text': habit['text'] ?? 'Habit',
                     'completed': habit['completed'] ?? false,
                     'description': habit['description'] ?? '',
                     'icon': habit['icon'] ?? Icons.spa_outlined.codePoint,
-                    'time': habit['time'] ?? 'Günlük',
+                    'time': habit['time'] ?? 'Daily',
                   };
                 }
                 return <String, dynamic>{};
@@ -257,11 +257,11 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
               .map((habit) {
                 if (habit is Map) {
                   return {
-                    'text': habit['text'] ?? 'Alışkanlık',
+                    'text': habit['text'] ?? 'Habit',
                     'completed': habit['completed'] ?? false,
                     'description': habit['description'] ?? '',
                     'icon': habit['icon'] ?? Icons.spa_outlined.codePoint,
-                    'time': habit['time'] ?? 'Haftalık',
+                    'time': habit['time'] ?? 'Weekly',
                   };
                 }
                 return <String, dynamic>{};
@@ -282,11 +282,11 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
               .map((habit) {
                 if (habit is Map) {
                   return {
-                    'text': habit['text'] ?? 'Alışkanlık',
+                    'text': habit['text'] ?? 'Habit',
                     'completed': habit['completed'] ?? false,
                     'description': habit['description'] ?? '',
                     'icon': habit['icon'] ?? Icons.spa_outlined.codePoint,
-                    'time': habit['time'] ?? 'Aylık',
+                    'time': habit['time'] ?? 'Monthly',
                   };
                 }
                 return <String, dynamic>{};
@@ -369,7 +369,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController descriptionController = TextEditingController();
     IconData selectedIcon = Icons.spa_outlined;
-    String selectedTime = 'Günlük';
+    String selectedTime = 'Daily';
 
     final List<IconData> icons = [
       Icons.cleaning_services_outlined,
@@ -385,7 +385,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
       Icons.update_outlined,
       Icons.science_outlined,
     ];
-    final List<String> times = ['Günlük', 'Haftalık', 'Aylık'];
+    final List<String> times = ['Daily', 'Weekly', 'Monthly'];
 
     showDialog(
       context: context,
@@ -396,7 +396,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
           ),
           backgroundColor: AppColors.white,
           title: Text(
-            'Yeni Alışkanlık',
+            'New Habit',
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -410,7 +410,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                 TextField(
                   controller: nameController,
                   decoration: InputDecoration(
-                    labelText: 'Alışkanlık Adı',
+                    labelText: 'Habit Name',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -420,7 +420,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                 TextField(
                   controller: descriptionController,
                   decoration: InputDecoration(
-                    labelText: 'Açıklama',
+                    labelText: 'Description',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -431,7 +431,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                 DropdownButtonFormField<String>(
                   value: selectedTime,
                   decoration: InputDecoration(
-                    labelText: 'Sıklık',
+                    labelText: 'Frequency',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -447,7 +447,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'İkon Seç',
+                  'Select Icon',
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -491,7 +491,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
-                'İptal',
+                'Cancel',
                 style: GoogleFonts.poppins(color: AppColors.textSecondary),
               ),
             ),
@@ -507,8 +507,8 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                   };
 
                   String targetTab = 'daily';
-                  if (selectedTime == 'Haftalık') targetTab = 'weekly';
-                  if (selectedTime == 'Aylık') targetTab = 'monthly';
+                  if (selectedTime == 'Weekly') targetTab = 'weekly';
+                  if (selectedTime == 'Monthly') targetTab = 'monthly';
 
                   setState(() {
                     habits[targetTab]!.add(newHabit);
@@ -525,7 +525,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                 ),
               ),
               child: Text(
-                'Ekle',
+                'Add',
                 style: GoogleFonts.poppins(color: AppColors.white),
               ),
             ),
@@ -550,7 +550,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Alışkanlıklar',
+          'Habits',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -649,10 +649,10 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                                     children: [
                                       Text(
                                         '${selectedTab == 'daily'
-                                            ? 'Günlük'
+                                            ? 'Daily'
                                             : selectedTab == 'weekly'
-                                            ? 'Haftalık'
-                                            : 'Aylık'} İlerleme',
+                                            ? 'Weekly'
+                                            : 'Monthly'} Progress',
                                         style: GoogleFonts.poppins(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
@@ -660,7 +660,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                                         ),
                                       ),
                                       Text(
-                                        '${(_calculateProgress() * 100).toStringAsFixed(0)}% tamamlandı • ${_getCompletedCount()} / ${habits[selectedTab]!.length} alışkanlık',
+                                        '${(_calculateProgress() * 100).toStringAsFixed(0)}% completed • ${_getCompletedCount()} / ${habits[selectedTab]!.length} habits',
                                         style: GoogleFonts.poppins(
                                           fontSize: 13,
                                           color: AppColors.textSecondary,
@@ -774,10 +774,10 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                                   ),
                                   child: Text(
                                     tab == 'daily'
-                                        ? 'Günlük'
+                                        ? 'Daily'
                                         : tab == 'weekly'
-                                        ? 'Haftalık'
-                                        : 'Aylık',
+                                        ? 'Weekly'
+                                        : 'Monthly',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                       fontSize: 14,
@@ -988,7 +988,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                                       ),
                                       const SizedBox(height: 16),
                                       Text(
-                                        'Henüz alışkanlık yok',
+                                        'No habits yet',
                                         style: GoogleFonts.poppins(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
@@ -997,7 +997,7 @@ class _HabitsPageState extends State<HabitsPage> with TickerProviderStateMixin {
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
-                                        'Yeni alışkanlık eklemek için + butonuna tıkla',
+                                        'Click + button to add a new habit',
                                         style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           color: AppColors.textSecondary,

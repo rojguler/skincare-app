@@ -32,11 +32,11 @@ class _AddEntryPageState extends State<AddEntryPage>
   double _skinConditionValue = 2.0; // 0-4 range
   final List<String> _skinConditionEmojis = ['🥲', '😐', '😊', '😍', '✨'];
   final List<String> _skinConditionTexts = [
-    'Çok kötü',
-    'Kötü',
+    'Very Bad',
+    'Bad',
     'Normal',
-    'İyi',
-    'Mükemmel',
+    'Good',
+    'Excellent',
   ];
 
   // Product tags with theme colors
@@ -47,22 +47,22 @@ class _AddEntryPageState extends State<AddEntryPage>
       'icon': Icons.water_drop_outlined.codePoint,
     },
     {
-      'name': 'Tonik',
+      'name': 'Toner',
       'color': AppColors.yellow,
       'icon': Icons.opacity_outlined.codePoint,
     },
     {
-      'name': 'Güneş Kremi',
+      'name': 'Sunscreen',
       'color': AppColors.marron,
       'icon': Icons.wb_sunny_outlined.codePoint,
     },
     {
-      'name': 'Nemlendirici',
+      'name': 'Moisturizer',
       'color': AppColors.pink,
       'icon': Icons.spa_outlined.codePoint,
     },
     {
-      'name': 'Maske',
+      'name': 'Mask',
       'color': AppColors.yellow,
       'icon': Icons.face_outlined.codePoint,
     },
@@ -85,22 +85,22 @@ class _AddEntryPageState extends State<AddEntryPage>
 
   // Temel ürünler
   final List<String> _basicProducts = [
-    'Yüz Yıkama Jeli',
-    'Tonik',
+    'Face Wash',
+    'Toner',
     'Serum',
-    'Nemlendirici',
-    'Güneş Kremi',
-    'Maske',
+    'Moisturizer',
+    'Sunscreen',
+    'Mask',
   ];
 
   // Cilt tipleri
   final List<String> _skinTypes = [
-    'Kuru',
-    'Yağlı',
-    'Hassas',
-    'Karma',
+    'Dry',
+    'Oily',
+    'Sensitive',
+    'Combination',
     'Normal',
-    'Akneli',
+    'Acne-Prone',
   ];
 
   // Yesterday comparison data
@@ -186,7 +186,7 @@ class _AddEntryPageState extends State<AddEntryPage>
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Fotoğraf seçilirken hata oluştu: $e')),
+        SnackBar(content: Text('Error selecting photo: $e')),
       );
     }
   }
@@ -220,7 +220,7 @@ class _AddEntryPageState extends State<AddEntryPage>
             ),
             const SizedBox(height: 20),
             Text(
-              'Fotoğraf Seç',
+              'Select Photo',
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
@@ -233,7 +233,7 @@ class _AddEntryPageState extends State<AddEntryPage>
               children: [
                 _buildImagePickerOption(
                   icon: Icons.camera_alt,
-                  label: 'Kamera',
+                  label: 'Camera',
                   onTap: () {
                     Navigator.pop(context);
                     _pickImage(ImageSource.camera);
@@ -241,7 +241,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                 ),
                 _buildImagePickerOption(
                   icon: Icons.photo_library,
-                  label: 'Galeri',
+                  label: 'Gallery',
                   onTap: () {
                     Navigator.pop(context);
                     _pickImage(ImageSource.gallery);
@@ -291,7 +291,7 @@ class _AddEntryPageState extends State<AddEntryPage>
     if (_yesterdayEntry == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Dünkü kayıt bulunamadı'),
+          content: Text('Yesterday\'s entry not found'),
           backgroundColor: AppColors.error,
         ),
       );
@@ -329,7 +329,7 @@ class _AddEntryPageState extends State<AddEntryPage>
           ),
         ),
         title: Text(
-          'Yeni Kayıt',
+          'New Entry',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -341,7 +341,7 @@ class _AddEntryPageState extends State<AddEntryPage>
             IconButton(
               icon: Icon(Icons.compare_arrows, color: AppColors.primary),
               onPressed: _showYesterdayComparison,
-              tooltip: 'Dünle karşılaştır',
+              tooltip: 'Compare with yesterday',
             ),
         ],
       ),
@@ -423,7 +423,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Yeni Kayıt Ekleme',
+                                    'Add New Entry',
                                     style: GoogleFonts.poppins(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -431,7 +431,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                                     ),
                                   ),
                                   Text(
-                                    'Bugünkü cilt durumunu ve kullandığın ürünleri kaydet',
+                                    'Log your skin condition and products for today',
                                     style: GoogleFonts.poppins(
                                       fontSize: 13,
                                       color: AppColors.textSecondary,
@@ -484,7 +484,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                'Dünkü Kayıt',
+                                'Yesterday\'s Entry',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -496,7 +496,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                           const SizedBox(height: 12),
                           if (_yesterdayEntry!['notes'].isNotEmpty) ...[
                             Text(
-                              'Not: ${_yesterdayEntry!['notes']}',
+                              'Note: ${_yesterdayEntry!['notes']}',
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 color: AppColors.textSecondary,
@@ -506,7 +506,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                           ],
                           if (_yesterdayEntry!['products'].isNotEmpty) ...[
                             Text(
-                              'Ürünler: ${_yesterdayEntry!['products'].join(', ')}',
+                              'Products: ${_yesterdayEntry!['products'].join(', ')}',
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 color: AppColors.textSecondary,
@@ -515,7 +515,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                             const SizedBox(height: 8),
                           ],
                           Text(
-                            'Cilt Tipi: ${_yesterdayEntry!['skinType']}',
+                            'Skin Type: ${_yesterdayEntry!['skinType']}',
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               color: AppColors.textSecondary,
@@ -536,7 +536,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Bugün cildin nasıl?',
+                        'How is your skin today?',
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -633,7 +633,7 @@ class _AddEntryPageState extends State<AddEntryPage>
 
                   // Product Tags Section
                   Text(
-                    'Kullandığın Ürünler',
+                    'Products Used',
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -720,7 +720,7 @@ class _AddEntryPageState extends State<AddEntryPage>
 
                   // Skin Type Selection
                   Text(
-                    'Cilt Tipi',
+                    'Skin Type',
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -785,7 +785,7 @@ class _AddEntryPageState extends State<AddEntryPage>
 
                   // Photos Section
                   Text(
-                    'Fotoğraflar',
+                    'Photos',
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -890,7 +890,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Fotoğraf Ekle',
+                              'Add Photo',
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 color: AppColors.primary,
@@ -907,7 +907,7 @@ class _AddEntryPageState extends State<AddEntryPage>
 
                   // Notes Section
                   Text(
-                    'Notlar',
+                    'Notes',
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -931,7 +931,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                       controller: _noteController,
                       maxLines: 5,
                       decoration: InputDecoration(
-                        hintText: 'Bugün cildinle ilgili notlarını yaz...',
+                        hintText: 'Write notes about your skin today...',
                         hintStyle: GoogleFonts.poppins(
                           fontSize: 14,
                           color: AppColors.textSecondary,
@@ -968,7 +968,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                         if (_selectedProducts.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text('En az bir ürün seçmelisin'),
+                              content: Text('You must select at least one product'),
                               backgroundColor: AppColors.error,
                             ),
                           );
@@ -995,16 +995,16 @@ class _AddEntryPageState extends State<AddEntryPage>
                           // Firebase'e de kaydet (hybrid sistem)
                           try {
                             await FirebaseService.saveSkincareEntry(entry);
-                            print('✅ Entry Firebase\'e kaydedildi');
+                            print('✅ Entry saved to Firebase');
                           } catch (e) {
-                            print('⚠️ Firebase kayıt hatası (offline olabilir): $e');
+                            print('⚠️ Firebase save error (might be offline): $e');
                           }
 
                           if (mounted) {
                             Navigator.pop(context);
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Kayıt başarıyla eklendi!'),
+                                content: Text('Entry successfully added!'),
                                 backgroundColor: AppColors.success,
                               ),
                             );
@@ -1012,7 +1012,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                         } catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('Kayıt eklenirken hata oluştu: $e'),
+                              content: Text('Error adding entry: $e'),
                               backgroundColor: AppColors.error,
                             ),
                           );
@@ -1027,7 +1027,7 @@ class _AddEntryPageState extends State<AddEntryPage>
                         ),
                       ),
                       child: Text(
-                        'Kaydet',
+                        'Save',
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

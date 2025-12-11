@@ -222,7 +222,7 @@ class _WelcomePageState extends State<WelcomePage>
                             const SizedBox(height: 8),
 
                             Text(
-                              'Cilt Bakım Yolculuğunuz',
+                              'Your Skincare Journey',
                               style: GoogleFonts.poppins(
                                 fontSize: 18,
                                 color: AppColors.textSecondary,
@@ -256,7 +256,7 @@ class _WelcomePageState extends State<WelcomePage>
                                 ],
                               ),
                               child: Text(
-                                'Güzellik rutininizi takip edin,\nprofesyonel cilt bakım önerileri alın',
+                                'Track your beauty routine,\nget professional skincare advice',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   color: AppColors.textSecondary,
@@ -356,7 +356,7 @@ class _WelcomePageState extends State<WelcomePage>
                                         ),
                                         const SizedBox(width: 12),
                                         Text(
-                                          'Hesap Oluştur',
+                                          'Create Account',
                                           style: GoogleFonts.poppins(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600,
@@ -449,7 +449,7 @@ class _WelcomePageState extends State<WelcomePage>
                                         ),
                                         const SizedBox(width: 12),
                                         Text(
-                                          'Giriş Yap',
+                                          'Log In',
                                           style: GoogleFonts.poppins(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600,
@@ -491,7 +491,7 @@ class _WelcomePageState extends State<WelcomePage>
                                         horizontal: 20,
                                       ),
                                       child: Text(
-                                        'veya',
+                                        'or',
                                         style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           color: AppColors.textSecondary,
@@ -672,7 +672,7 @@ class _WelcomePageState extends State<WelcomePage>
   void _handleSocialLogin(String provider) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('$provider ile giriş yakında eklenecek!'),
+        content: Text('Login with $provider coming soon!'),
         backgroundColor: AppColors.primary,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

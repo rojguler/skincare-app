@@ -31,7 +31,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Bildirim Ayarları',
+          'Notification Settings',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -76,7 +76,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Bildirimler',
+                          'Notifications',
                           style: GoogleFonts.poppins(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Cilt bakım rutinlerinizi unutmayın',
+                          'Don\'t forget your skincare routines',
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             color: Colors.white.withOpacity(0.9),
@@ -102,8 +102,8 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
 
             // Morning Reminders
             _buildReminderSection(
-              title: 'Sabah Hatırlatmaları',
-              subtitle: 'Güneş kremi ve sabah rutini',
+              title: 'Morning Reminders',
+              subtitle: 'Sunscreen and morning routine',
               isEnabled: _morningReminders,
               time: _morningTime,
               onToggle: (value) {
@@ -122,8 +122,8 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
 
             // Evening Reminders
             _buildReminderSection(
-              title: 'Akşam Hatırlatmaları',
-              subtitle: 'Gece bakımı ve temizlik',
+              title: 'Evening Reminders',
+              subtitle: 'Night care and cleaning',
               isEnabled: _eveningReminders,
               time: _eveningTime,
               onToggle: (value) {
@@ -142,8 +142,8 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
 
             // Weekly Reminders
             _buildSimpleSwitch(
-              title: 'Haftalık Hatırlatmalar',
-              subtitle: 'Peeling ve maske rutinleri',
+              title: 'Weekly Reminders',
+              subtitle: 'Peeling and mask routines',
               isEnabled: _weeklyReminders,
               onToggle: (value) {
                 setState(() {
@@ -156,8 +156,8 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
 
             // Custom Reminders
             _buildSimpleSwitch(
-              title: 'Özel Hatırlatmalar',
-              subtitle: 'Kişiselleştirilmiş bildirimler',
+              title: 'Custom Reminders',
+              subtitle: 'Personalized notifications',
               isEnabled: _customReminders,
               onToggle: (value) {
                 setState(() {
@@ -181,7 +181,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   ),
                 ),
                 child: Text(
-                  'Ayarları Kaydet',
+                  'Save Settings',
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -366,7 +366,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                'Bildirim ayarları kaydedildi!',
+                'Notification settings saved!',
                 style: GoogleFonts.poppins(color: Colors.white),
               ),
             ),

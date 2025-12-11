@@ -144,7 +144,7 @@ class ProductCard extends StatelessWidget {
                   // Description
                   if (product.description != null) ...[
                     Text(
-                      'Açıklama:',
+                      'Description:',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -166,7 +166,7 @@ class ProductCard extends StatelessWidget {
 
                   // Ingredients
                   Text(
-                    'İçerikler:',
+                    'Ingredients:',
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -188,7 +188,7 @@ class ProductCard extends StatelessWidget {
 
                   // Nutrition info
                   Text(
-                    'Besin Değerleri:',
+                    'Nutrition Facts:',
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,

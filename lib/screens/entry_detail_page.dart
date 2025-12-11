@@ -29,7 +29,7 @@ class EntryDetailPage extends StatelessWidget {
             Icon(Icons.info_outline_rounded, color: AppColors.pink, size: 24),
             const SizedBox(width: 8),
             Text(
-              'Kayıt Detayı',
+              'Entry Details',
               style: GoogleFonts.poppins(
                 color: const Color(0xFF333333),
                 fontWeight: FontWeight.w800,
@@ -88,7 +88,7 @@ class EntryDetailPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Cilt Bakım Kaydı',
+                              'Skincare Log',
                               style: GoogleFonts.poppins(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
@@ -144,7 +144,7 @@ class EntryDetailPage extends StatelessWidget {
               const SizedBox(height: 28),
 
             _buildLabel(
-              'Tarih',
+              'Date',
               icon: Icons.calendar_today_rounded,
               color: AppColors.pink,
             ), // Changed from yellow
@@ -160,7 +160,7 @@ class EntryDetailPage extends StatelessWidget {
 
             if (productsList.isNotEmpty) ...[
               _buildLabel(
-                'Kullanılan Ürünler',
+                'Products Used',
                 icon: Icons.category_rounded,
                 color: AppColors.pink,
               ), // Changed from yellow
@@ -208,7 +208,7 @@ class EntryDetailPage extends StatelessWidget {
 
             if (note.isNotEmpty) ...[
               _buildLabel(
-                'Notlar',
+                'Notes',
                 icon: Icons.note_rounded,
                 color: AppColors.pink,
               ), // Changed from yellow

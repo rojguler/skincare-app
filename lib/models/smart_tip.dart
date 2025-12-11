@@ -25,116 +25,116 @@ class SmartTip {
 class SmartTipService {
   static final List<SmartTip> _tips = [
     SmartTip(
-      condition: "Günlük seri 1-3 gün",
-      tip: "Yeni başlıyorsun! Hedef 5 gün, etkisini göreceksin.",
+      condition: "Daily streak 1-3 days",
+      tip: "Just getting started! Aim for 5 days, you'll see the effect.",
     ),
     SmartTip(
-      condition: "Günlük seri 4-6 gün",
-      tip: "Disiplin artıyor! Haftalık hedefini tamamla.",
+      condition: "Daily streak 4-6 days",
+      tip: "Discipline is increasing! Complete your weekly goal.",
     ),
     SmartTip(
-      condition: "Günlük seri 7+ gün",
-      tip: "Harika! Rutinin oturuyor, cildin değişimi hissediyor.",
+      condition: "Daily streak 7+ days",
+      tip: "Great! Your routine is settling, your skin feels the change.",
     ),
     SmartTip(
-      condition: "Günlük seri 30+ gün",
-      tip: "1 aydır düzenlisin! Cildin seni ödüllendiriyor.",
+      condition: "Daily streak 30+ days",
+      tip: "Consistent for 1 month! Your skin is rewarding you.",
     ),
     SmartTip(
-      condition: "Hiç ürün kullanılmamış",
-      tip: "Henüz ürün eklemedin! Favori bir nemlendirici veya serum seç.",
+      condition: "No products used",
+      tip: "You haven't added products yet! Choose a favorite moisturizer or serum.",
     ),
     SmartTip(
-      condition: "Uzun süredir ürün eklenmedi",
-      tip: "Bir süredir ara vermişsin, şimdi yeni ürün ekle ve etkisini izle.",
+      condition: "No products added for a while",
+      tip: "You took a break, now add a new product and watch the effect.",
     ),
     SmartTip(
-      condition: "Yeni ürün eklendi",
-      tip: "Yeni ürün, yeni dönem! 1-2 hafta sabırlı ol, etkisini izle.",
+      condition: "New product added",
+      tip: "New product, new era! Be patient for 1-2 weeks, watch the effect.",
     ),
     SmartTip(
-      condition: "En çok kullanılan ürün: Nemlendirici",
-      tip: "Rutinin nem dengesi iyi! Arada peeling de ekle.",
+      condition: "Most used product: Moisturizer",
+      tip: "Moisture balance is good! Add peeling occasionally.",
     ),
     SmartTip(
-      condition: "En çok kullanılan ürün: Serum",
-      tip: "Serumlarla ışıltını artır! C vitamini sabah rutiniyle birleşince harika olur.",
+      condition: "Most used product: Serum",
+      tip: "Boost your glow with serums! Vitamin C is great with morning routine.",
     ),
     SmartTip(
-      condition: "En çok kullanılan ürün: Temizleyici",
-      tip: "Temizlik iyi ama aşırıya kaçma, cildin kuruyabilir.",
+      condition: "Most used product: Cleanser",
+      tip: "Cleansing is good but don't overdo it, your skin might dry out.",
     ),
     SmartTip(
-      condition: "Haftada 5+ gün bakım ve en çok kullanılan ürün: Retinol",
-      tip: "Süper! Retinol etkisini artırmak için gece rutinine sadık kal.",
+      condition: "Weekly 5+ days care & most used product: Retinol",
+      tip: "Super! Stick to night routine to boost Retinol effect.",
     ),
     SmartTip(
-      condition: "Haftada 5+ gün bakım ve en çok kullanılan ürün: Niacinamide",
-      tip: "Harika! Gözenekleri dengelemeye devam et, leke karşıtı SPF ekle.",
+      condition: "Weekly 5+ days care & most used product: Niacinamide",
+      tip: "Great! Keep balancing pores, add anti-spot SPF.",
     ),
     SmartTip(
-      condition: "Haftada 5+ gün bakım ve cilt tipi: Kuru",
-      tip: "Cildin nemli kalıyor ama ekstra nem maskesi ile güçlendir.",
+      condition: "Weekly 5+ days care & skin type: Dry",
+      tip: "Your skin stays hydrated but boost with extra moisture mask.",
     ),
     SmartTip(
-      condition: "Haftada 5+ gün bakım ve cilt tipi: Yağlı",
-      tip: "Sebum dengesi iyi! Hafif nemlendirici ve BHA kullanabilirsin.",
+      condition: "Weekly 5+ days care & skin type: Oily",
+      tip: "Sebum balance is good! You can use light moisturizer and BHA.",
     ),
     SmartTip(
-      condition: "Haftada 5+ gün bakım ve cilt tipi: Karma",
-      tip: "Dengeyi koru! Bölgelere göre nemlendirici ve serum kullan.",
+      condition: "Weekly 5+ days care & skin type: Combination",
+      tip: "Keep the balance! Use regional moisturizer and serum.",
     ),
     SmartTip(
-      condition: "Haftada 5+ gün bakım ve cilt tipi: Hassas",
-      tip: "Cildin hassas, nazik ürünler ve Centella Asiatica ile yatıştır.",
+      condition: "Weekly 5+ days care & skin type: Sensitive",
+      tip: "Sensitive skin, soothe with gentle products and Centella Asiatica.",
     ),
     SmartTip(
-      condition: "Seri 1+ ay ve nem düşük",
-      tip: "Uzun süredir bakım yapıyorsun ama nemi artır! Hyaluronic Acid ekle.",
+      condition: "Streak 1+ month & low moisture",
+      tip: "You've been caring for a long time but boost moisture! Add Hyaluronic Acid.",
     ),
     SmartTip(
-      condition: "Seri 1+ ay ve leke sorunu var",
-      tip: "C vitamini sabah rutiniyle lekeleri azaltmaya yardımcı olur.",
+      condition: "Streak 1+ month & spots issue",
+      tip: "Vitamin C helps reduce spots with morning routine.",
     ),
     SmartTip(
-      condition: "Seri 1+ ay ve akne problemi var",
-      tip: "BHA ve Salicylic Acid ile gözenekleri temizle, cildi dengele.",
+      condition: "Streak 1+ month & acne problem",
+      tip: "Clean pores with BHA and Salicylic Acid, balance the skin.",
     ),
     SmartTip(
-      condition: "Seri 1+ ay ve kırışıklık fark edilmiş",
-      tip: "Peptidler ve Retinol ile kırışıklık görünümünü azalt.",
+      condition: "Streak 1+ month & wrinkles noticed",
+      tip: "Reduce wrinkle appearance with Peptides and Retinol.",
     ),
     SmartTip(
-      condition: "Uzun süre aktif ürün karışımı fazla",
-      tip: "Fazla aktif ürün birleştirme! Tahrişi önlemek için azalt.",
+      condition: "Long time active product mix high",
+      tip: "Don't mix too many actives! Reduce to prevent irritation.",
     ),
     SmartTip(
-      condition: "Yeni ürün ve cilt tipi kuru",
-      tip: "Yeni ürünü ekledin, ekstra nemlendirici ile destekle.",
+      condition: "New product & skin type dry",
+      tip: "Added new product, support with extra moisturizer.",
     ),
     SmartTip(
-      condition: "Yeni ürün ve cilt tipi yağlı",
-      tip: "Yeni ürün, sebumu dengelemek için hafif formüller seç.",
+      condition: "New product & skin type oily",
+      tip: "New product, choose light formulas to balance sebum.",
     ),
     SmartTip(
-      condition: "Yeni ürün ve cilt tipi hassas",
-      tip: "Yeni ürünü test etmeden tüm yüzüne uygulama, yavaş başla.",
+      condition: "New product & skin type sensitive",
+      tip: "Don't apply new product to whole face without test, start slow.",
     ),
     SmartTip(
-      condition: "Haftada 7+ gün rutin ve SPF eksik",
-      tip: "Disiplin harika! Şimdi SPF ekle, koruma olmazsa etkisi azalır.",
+      condition: "Weekly 7+ days routine & missing SPF",
+      tip: "Discipline is great! Now add SPF, effect reduces without protection.",
     ),
     SmartTip(
-      condition: "Haftada 7+ gün rutin ve cilt parlaklığı düşük",
-      tip: "C vitamini ve nem desteği ile ışıltını artır!",
+      condition: "Weekly 7+ days routine & low skin glow",
+      tip: "Boost your glow with Vitamin C and moisture support!",
     ),
     SmartTip(
-      condition: "Haftada 7+ gün rutin ve gözenek görünümü fazla",
-      tip: "Niacinamide ve düzenli temizleme ile gözenekleri sıkılaştır.",
+      condition: "Weekly 7+ days routine & high pore appearance",
+      tip: "Tighten pores with Niacinamide and regular cleansing.",
     ),
     SmartTip(
-      condition: "Haftada 7+ gün rutin ve cilt tahrişi var",
-      tip: "Tahriş olmuş cildini yatıştır, ürünleri azalt ve Centella Asiatica ekle.",
+      condition: "Weekly 7+ days routine & skin irritation",
+      tip: "Soothe irritated skin, reduce products and add Centella Asiatica.",
     ),
   ];
 
@@ -168,11 +168,11 @@ class SmartTipService {
     }
 
     // En çok kullanılan ürün kontrolü
-    if (mostUsedProduct.toLowerCase().contains('nemlendirici')) {
+    if (mostUsedProduct.toLowerCase().contains('moisturizer')) {
       matchingTips.add(_tips[7]);
     } else if (mostUsedProduct.toLowerCase().contains('serum')) {
       matchingTips.add(_tips[8]);
-    } else if (mostUsedProduct.toLowerCase().contains('temizleyici')) {
+    } else if (mostUsedProduct.toLowerCase().contains('cleanser') || mostUsedProduct.toLowerCase().contains('wash')) {
       matchingTips.add(_tips[9]);
     }
 
@@ -185,40 +185,40 @@ class SmartTipService {
       }
 
       // Cilt tipi kontrolü
-      if (skinType.toLowerCase().contains('kuru')) {
+      if (skinType.toLowerCase().contains('dry')) {
         matchingTips.add(_tips[12]);
-      } else if (skinType.toLowerCase().contains('yağlı')) {
+      } else if (skinType.toLowerCase().contains('oily')) {
         matchingTips.add(_tips[13]);
-      } else if (skinType.toLowerCase().contains('karma')) {
+      } else if (skinType.toLowerCase().contains('combination')) {
         matchingTips.add(_tips[14]);
-      } else if (skinType.toLowerCase().contains('hassas')) {
+      } else if (skinType.toLowerCase().contains('sensitive')) {
         matchingTips.add(_tips[15]);
       }
     }
 
     // Uzun süreli kullanım ve sorunlar
     if (totalDays >= 30) {
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('kuruluk'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('dryness'))) {
         matchingTips.add(_tips[16]);
       }
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('leke'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('blemish'))) {
         matchingTips.add(_tips[17]);
       }
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('akne'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('acne'))) {
         matchingTips.add(_tips[18]);
       }
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('kırışık'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('wrinkle'))) {
         matchingTips.add(_tips[19]);
       }
     }
 
     // Yeni ürün ve cilt tipi kombinasyonu
     if (hasNewProduct) {
-      if (skinType.toLowerCase().contains('kuru')) {
+      if (skinType.toLowerCase().contains('dry')) {
         matchingTips.add(_tips[21]);
-      } else if (skinType.toLowerCase().contains('yağlı')) {
+      } else if (skinType.toLowerCase().contains('oily')) {
         matchingTips.add(_tips[22]);
-      } else if (skinType.toLowerCase().contains('hassas')) {
+      } else if (skinType.toLowerCase().contains('sensitive')) {
         matchingTips.add(_tips[23]);
       }
     }
@@ -227,22 +227,22 @@ class SmartTipService {
     if (weeklyUsage >= 7) {
       // SPF eksik kontrolü (basit bir kontrol)
       if (!mostUsedProduct.toLowerCase().contains('spf') && 
-          !mostUsedProduct.toLowerCase().contains('güneş')) {
+          !mostUsedProduct.toLowerCase().contains('sun')) {
         matchingTips.add(_tips[24]);
       }
       
       // Cilt parlaklığı düşük (basit bir kontrol)
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('mat'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('dull'))) {
         matchingTips.add(_tips[25]);
       }
       
       // Gözenek görünümü fazla
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('gözenek'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('pore'))) {
         matchingTips.add(_tips[26]);
       }
       
       // Cilt tahrişi
-      if (skinProblems.any((problem) => problem.toLowerCase().contains('tahriş'))) {
+      if (skinProblems.any((problem) => problem.toLowerCase().contains('irritat'))) {
         matchingTips.add(_tips[27]);
       }
     }

@@ -41,7 +41,7 @@ class CustomErrorWidget extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              title ?? 'Hata',
+              title ?? 'Error',
               style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
@@ -51,7 +51,7 @@ class CustomErrorWidget extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              subtitle ?? error ?? 'Bilinmeyen hata',
+              subtitle ?? error ?? 'Unknown error',
               style: GoogleFonts.inter(
                 fontSize: 16,
                 color: AppColors.textSecondary,
@@ -61,7 +61,7 @@ class CustomErrorWidget extends StatelessWidget {
             if (onRetry != null) ...[
               const SizedBox(height: 24),
               CustomButton(
-                text: 'Tekrar Dene',
+                text: 'Try Again',
                 onPressed: onRetry ?? () {},
                 icon: Icons.refresh_rounded,
                 width: 200,

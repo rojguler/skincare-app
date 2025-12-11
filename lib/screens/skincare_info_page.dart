@@ -20,14 +20,14 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
   late Animation<Offset> _slideAnimation;
 
   String _searchQuery = '';
-  String _selectedCategory = 'Tümü';
+  String _selectedCategory = 'All';
 
   final List<String> _categories = [
-    'Tümü',
+    'All',
     'Anti-Aging',
-    'Nemlendirici',
-    'Temizleyici',
-    'Koruyucu',
+    'Moisturizer',
+    'Cleanser',
+    'Protector',
   ];
 
   @override
@@ -71,7 +71,7 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
           );
 
       bool matchesCategory =
-          _selectedCategory == 'Tümü' ||
+          _selectedCategory == 'All' ||
           _getCategoryForIngredient(ingredient.id) == _selectedCategory;
 
       return matchesSearch && matchesCategory;
@@ -87,15 +87,15 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
       case 'hyaluronic_acid':
       case 'ceramides':
       case 'centella_asiatica':
-        return 'Nemlendirici';
+        return 'Moisturizer';
       case 'salicylic_acid':
       case 'aha':
       case 'bha':
-        return 'Temizleyici';
+        return 'Cleanser';
       case 'niacinamide':
-        return 'Koruyucu';
+        return 'Protector';
       default:
-        return 'Tümü';
+        return 'All';
     }
   }
 
@@ -103,12 +103,12 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
     switch (category) {
       case 'Anti-Aging':
         return AppColors.marron;
-      case 'Nemlendirici':
+      case 'Moisturizer':
         return AppColors.pink;
-      case 'Temizleyici':
+      case 'Cleanser':
         return AppColors
             .marron; // Changed from yellow to marron for better visibility
-      case 'Koruyucu':
+      case 'Protector':
         return AppColors
             .pink; // Changed from marron to pink for better visibility
       default:
@@ -120,11 +120,11 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
     switch (category) {
       case 'Anti-Aging':
         return Icons.auto_awesome;
-      case 'Nemlendirici':
+      case 'Moisturizer':
         return Icons.water_drop;
-      case 'Temizleyici':
+      case 'Cleanser':
         return Icons.cleaning_services;
-      case 'Koruyucu':
+      case 'Protector':
         return Icons.shield;
       default:
         return Icons.category;
@@ -216,7 +216,7 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Skincare Rehberi',
+                                'Skincare Guide',
                                 style: GoogleFonts.poppins(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
@@ -225,7 +225,7 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                'Cilt bakımının bilimsel dünyasını keşfedin',
+                                'Discover the scientific world of skincare',
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   color: AppColors.textSecondary,
@@ -271,7 +271,7 @@ class _SkincareInfoPageState extends State<SkincareInfoPage>
                             fontSize: 16,
                           ),
                           decoration: InputDecoration(
-                            hintText: 'Bileşen ara...',
+                            hintText: 'Search ingredients...',
                             hintStyle: GoogleFonts.poppins(
                               color: AppColors.textSecondary,
                               fontSize: 16,

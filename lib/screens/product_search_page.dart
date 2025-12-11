@@ -86,7 +86,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _errorMessage = 'Son ürünler yüklenirken hata oluştu: $e';
+          _errorMessage = 'Error loading recent products: $e';
           _isLoading = false;
         });
       }
@@ -158,7 +158,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
             // Eğer sonuç yoksa kullanıcıya bilgi ver
             if (results.isEmpty && query.trim().isNotEmpty) {
               _errorMessage =
-                  '"$query" için ürün bulunamadı. Farklı anahtar kelimeler deneyin.';
+                  '"$query" not found. Try different keywords.';
             }
           });
         }
@@ -166,7 +166,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
         // Arama hatası: $e
         if (mounted) {
           setState(() {
-            _errorMessage = 'Arama sırasında hata oluştu: $e';
+            _errorMessage = 'Error during search: $e';
             _isSearching = false;
           });
         }
@@ -221,13 +221,13 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
         );
       } else if (mounted) {
         setState(() {
-          _errorMessage = 'Bu barkod ile ürün bulunamadı: $barcode';
+          _errorMessage = 'Product not found with this barcode: $barcode';
         });
       }
     } catch (e) {
       if (mounted) {
         setState(() {
-          _errorMessage = 'Barkod tarama sırasında hata oluştu: $e';
+          _errorMessage = 'Error capturing barcode: $e';
         });
       }
     } finally {
@@ -278,7 +278,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
           ),
         ),
         title: Text(
-          'Ürün Arama',
+          'Product Search',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -304,7 +304,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                    'Örnek ürünler eklendi',
+                    'Sample products added',
                     style: GoogleFonts.poppins(),
                   ),
                   backgroundColor: AppColors.success,
@@ -387,7 +387,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Ürün Arama',
+                              'Product Search',
                               style: GoogleFonts.poppins(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -395,7 +395,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                               ),
                             ),
                             Text(
-                              'Ürün adı ile arama yapın veya barkod tarayın',
+                              'Search by product name or scan barcode',
                               style: GoogleFonts.poppins(
                                 fontSize: 13,
                                 color: AppColors.textSecondary,
@@ -452,7 +452,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          _searchMode == 'text' ? 'Ürün Ara' : 'Barkod Tarama',
+                          _searchMode == 'text' ? 'Search Product' : 'Scan Barcode',
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -493,7 +493,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                         controller: _searchController,
                         focusNode: _searchFocusNode,
                         decoration: InputDecoration(
-                          hintText: 'Ürün adı ile arama yapın...',
+                          hintText: 'Search by product name...',
                           hintStyle: GoogleFonts.poppins(
                             color: AppColors.textSecondary,
                             fontSize: 15,
@@ -610,7 +610,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Barkod Tarayıcısını Aç',
+                            'Open Barcode Scanner',
                             style: GoogleFonts.poppins(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -619,7 +619,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Ürünün barkodunu tarayarak bilgilerini görün',
+                            'Scan product barcode to see details',
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               color: AppColors.textSecondary,
@@ -630,7 +630,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                           ElevatedButton.icon(
                             onPressed: () => _openBarcodeScanner(),
                             icon: Icon(Icons.camera_alt),
-                            label: Text('Taramayı Başlat'),
+                            label: Text('Start Scanning'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.marron,
                               foregroundColor: Colors.white,
@@ -703,7 +703,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                     CircularProgressIndicator(color: AppColors.primary),
                     const SizedBox(height: 16),
                     Text(
-                      _isSearching ? 'Ürün aranıyor...' : 'Yükleniyor...',
+                      _isSearching ? 'Searching product...' : 'Loading...',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.textSecondary,
@@ -712,7 +712,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                     if (_isSearching) ...[
                       const SizedBox(height: 8),
                       Text(
-                        'Gerçek zamanlı veriler kontrol ediliyor',
+                        'Checking real-time data',
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: AppColors.textSecondary,
@@ -734,7 +734,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                       child: Row(
                         children: [
                           Text(
-                            'Arama Sonuçları (${_searchResults.length})',
+                            'Search Results (${_searchResults.length})',
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -744,7 +744,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                           const Spacer(),
                           if (_searchResults.isNotEmpty)
                             Text(
-                              'Gerçek zamanlı veri',
+                              'Real-time data',
                               style: GoogleFonts.poppins(
                                 fontSize: 12,
                                 color: AppColors.success,
@@ -789,7 +789,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        'Ürün Arama',
+                        'Product Search',
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

@@ -41,26 +41,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   // Reminders - görseldeki hatırlatmalar (küçültülmüş)
   List<Map<String, dynamic>> _reminders = [
-    {'title': 'Güneş kremi sür', 'time': '09:00', 'completed': true},
-    {'title': 'Gece serumu', 'time': '22:00', 'completed': true},
-    {'title': 'Su iç', 'time': 'Her saat', 'completed': false},
+    {'title': 'Apply Sunscreen', 'time': '09:00', 'completed': true},
+    {'title': 'Night Serum', 'time': '22:00', 'completed': true},
+    {'title': 'Drink Water', 'time': 'Every hour', 'completed': false},
   ];
 
   // Daily skincare routines - görseldeki rutinler
   List<Map<String, dynamic>> _dailyRoutines = [
     {
-      'title': 'Sabah Rutini',
-      'description': 'Temizlik → Tonik → Serum → Nemlendirici → SPF',
+      'title': 'Morning Routine',
+      'description': 'Cleanser → Toner → Serum → Moisturizer → SPF',
       'icon': Icons.wb_sunny_outlined,
       'category': 'AM',
-      'steps': ['Temizlik', 'Tonik', 'Serum', 'Nemlendirici', 'SPF'],
+      'steps': ['Cleanser', 'Toner', 'Serum', 'Moisturizer', 'SPF'],
     },
     {
-      'title': 'Akşam Rutini',
-      'description': 'Temizlik → Tonik → Serum → Maske → Gece Kremi',
+      'title': 'Evening Routine',
+      'description': 'Cleanser → Toner → Serum → Mask → Night Cream',
       'icon': Icons.nightlight_outlined,
       'category': 'PM',
-      'steps': ['Temizlik', 'Tonik', 'Serum', 'Maske', 'Gece Kremi'],
+      'steps': ['Cleanser', 'Toner', 'Serum', 'Mask', 'Night Cream'],
     },
   ];
 
@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         for (var habit in savedHabits) {
           if (habit is Map) {
             dailyHabits.add({
-              'title': habit['text'] ?? 'Alışkanlık',
+              'title': habit['text'] ?? 'Habit',
               // Yeni günse otomatik olarak false, değilse kaydedilen değeri kullan
               'completed': shouldResetDaily ? false : (habit['completed'] ?? false),
               'description': habit['description'] ?? '',
@@ -158,32 +158,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         // Default habits if none exist
         final defaultHabits = [
           {
-            'title': 'Yüz Yıkama',
+            'title': 'Face Wash',
             'completed': false,
-            'description': 'Sabah ve akşam yüzünü temizle',
+            'description': 'Cleanse your face morning and night',
             'icon': Icons.cleaning_services_outlined.codePoint,
-            'time': 'Sabah & Akşam',
+            'time': 'Morning & Evening',
           },
           {
-            'title': 'Bol Su İç',
+            'title': 'Drink Water',
             'completed': false,
-            'description': 'Günde en az 8 bardak su iç',
+            'description': 'Drink at least 8 glasses of water daily',
             'icon': Icons.water_drop_outlined.codePoint,
-            'time': 'Gün boyu',
+            'time': 'All Day',
           },
           {
-            'title': 'Güneş Kremi',
+            'title': 'Sunscreen',
             'completed': false,
-            'description': 'Güneşe çıkmadan önce mutlaka sür',
+            'description': 'Apply before going out',
             'icon': Icons.wb_sunny_outlined.codePoint,
-            'time': 'Sabah',
+            'time': 'Morning',
           },
           {
-            'title': 'Gece Bakımı',
+            'title': 'Night Care',
             'completed': false,
-            'description': 'Yatmadan önce serum ve nemlendirici',
+            'description': 'Serum and moisturizer before bed',
             'icon': Icons.nightlight_outlined.codePoint,
-            'time': 'Akşam',
+            'time': 'Evening',
           },
         ];
         setState(() {
@@ -197,32 +197,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       // Fallback to default habits
       final defaultHabits = [
         {
-          'title': 'Yüz Yıkama',
-          'completed': false,
-          'description': 'Sabah ve akşam yüzünü temizle',
-          'icon': Icons.cleaning_services_outlined.codePoint,
-          'time': 'Sabah & Akşam',
+            'title': 'Face Wash',
+            'completed': false,
+            'description': 'Cleanse your face morning and night',
+            'icon': Icons.cleaning_services_outlined.codePoint,
+            'time': 'Morning & Evening',
         },
         {
-          'title': 'Bol Su İç',
+          'title': 'Drink Water',
           'completed': false,
-          'description': 'Günde en az 8 bardak su iç',
+          'description': 'Drink at least 8 glasses of water daily',
           'icon': Icons.water_drop_outlined.codePoint,
-          'time': 'Gün boyu',
+          'time': 'All Day',
         },
         {
-          'title': 'Güneş Kremi',
-          'completed': false,
-          'description': 'Güneşe çıkmadan önce mutlaka sür',
-          'icon': Icons.wb_sunny_outlined.codePoint,
-          'time': 'Sabah',
+            'title': 'Sunscreen',
+            'completed': false,
+            'description': 'Apply before going out',
+            'icon': Icons.wb_sunny_outlined.codePoint,
+            'time': 'Morning',
         },
         {
-          'title': 'Gece Bakımı',
-          'completed': false,
-          'description': 'Yatmadan önce serum ve nemlendirici',
-          'icon': Icons.nightlight_outlined.codePoint,
-          'time': 'Akşam',
+            'title': 'Night Care',
+            'completed': false,
+            'description': 'Serum and moisturizer before bed',
+            'icon': Icons.nightlight_outlined.codePoint,
+            'time': 'Evening',
         },
       ];
       setState(() {
@@ -280,7 +280,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               _hasTodayEntry = true;
               _todaySkinNote = entry.notes.isNotEmpty
                   ? entry.notes
-                  : 'Bugün cildin harika görünüyor! ✨';
+                  : 'Your skin looks great today! ✨';
             });
             return;
           }
@@ -376,14 +376,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Yeni Hatırlatma', style: GoogleFonts.poppins()),
+        title: Text('New Reminder', style: GoogleFonts.poppins()),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: _newReminderController,
               decoration: InputDecoration(
-                labelText: 'Hatırlatma',
+                labelText: 'Reminder',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -392,7 +392,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('İptal'),
+            child: Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -409,7 +409,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 Navigator.pop(context);
               }
             },
-            child: Text('Ekle'),
+            child: Text('Add'),
           ),
         ],
       ),
@@ -453,28 +453,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   String _getDefaultDescription(String title) {
     switch (title) {
-      case 'Yüz Yıkama':
-        return 'Sabah ve akşam yüzünü temizle';
-      case 'Bol Su İç':
-        return 'Günde en az 8 bardak su iç';
-      case 'Güneş Kremi':
-        return 'Güneşe çıkmadan önce mutlaka sür';
-      case 'Gece Bakımı':
-        return 'Yatmadan önce serum ve nemlendirici';
+        case 'Face Wash':
+        return 'Cleanse your face morning and night';
+        case 'Drink Water':
+        return 'Drink at least 8 glasses of water daily';
+        case 'Sunscreen':
+        return 'Apply before going out';
+        case 'Night Care':
+        return 'Serum and moisturizer before bed';
       default:
-        return 'Günlük cilt bakım alışkanlığı';
+        return 'Daily skincare habit';
     }
   }
 
   int _getDefaultIcon(String title) {
     switch (title) {
-      case 'Yüz Yıkama':
+        case 'Face Wash':
         return Icons.cleaning_services_outlined.codePoint;
-      case 'Bol Su İç':
+        case 'Drink Water':
         return Icons.water_drop_outlined.codePoint;
-      case 'Güneş Kremi':
+        case 'Sunscreen':
         return Icons.wb_sunny_outlined.codePoint;
-      case 'Gece Bakımı':
+        case 'Night Care':
         return Icons.nightlight_outlined.codePoint;
       default:
         return Icons.task_alt_outlined.codePoint;
@@ -483,16 +483,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   String _getDefaultTime(String title) {
     switch (title) {
-      case 'Yüz Yıkama':
-        return 'Sabah & Akşam';
-      case 'Bol Su İç':
-        return 'Gün boyu';
-      case 'Güneş Kremi':
-        return 'Sabah';
-      case 'Gece Bakımı':
-        return 'Akşam';
+        case 'Face Wash':
+        return 'Morning & Evening';
+        case 'Drink Water':
+        return 'All Day';
+        case 'Sunscreen':
+        return 'Morning';
+        case 'Night Care':
+        return 'Evening';
       default:
-        return 'Her gün';
+        return 'Every Day';
     }
   }
 
@@ -579,7 +579,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Hoş geldin! 👋',
+                                  'Welcome! 👋',
                                   style: GoogleFonts.poppins(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
@@ -589,7 +589,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 Text(
                                   DateFormat(
                                     'd MMMM yyyy',
-                                    'tr_TR',
+                                    'en_US',
                                   ).format(DateTime.now()),
                                   style: GoogleFonts.poppins(
                                     fontSize: 12,
@@ -700,7 +700,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 color: AppColors.textPrimary,
                               ),
                               decoration: InputDecoration(
-                                hintText: 'Cilt bakım ürünü ara...',
+                                hintText: 'Search skincare products...',
                                 hintStyle: GoogleFonts.poppins(
                                   fontSize: 14,
                                   color: AppColors.textSecondary,
@@ -729,8 +729,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Expanded(
                           child: _buildQuickActionCard(
                             icon: Icons.add,
-                            title: 'Yeni Kayıt',
-                            subtitle: 'Cilt bakım günlüğü',
+                            title: 'New Entry',
+                            subtitle: 'Skincare log',
                             color: AppColors.pink,
                             onTap: () {
                               _hapticFeedback();
@@ -747,8 +747,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Expanded(
                           child: _buildQuickActionCard(
                             icon: Icons.search,
-                            title: 'Ürün Ara',
-                            subtitle: 'Veritabanında ara',
+                            title: 'Search Product',
+                            subtitle: 'Search database',
                             color: AppColors.marron,
                             onTap: () {
                               _hapticFeedback();
@@ -769,8 +769,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Expanded(
                           child: _buildQuickActionCard(
                             icon: Icons.list_alt,
-                            title: 'Tüm Kayıtlar',
-                            subtitle: 'Geçmiş kayıtlar',
+                            title: 'All Entries',
+                            subtitle: 'Past entries',
                             color: AppColors.marron,
                             onTap: () {
                               _hapticFeedback();
@@ -787,8 +787,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Expanded(
                           child: _buildQuickActionCard(
                             icon: Icons.bar_chart,
-                            title: 'İstatistikler',
-                            subtitle: 'Detaylı analiz',
+                            title: 'Statistics',
+                            subtitle: 'Detailed analysis',
                             color: AppColors.pink,
                             onTap: () {
                               _hapticFeedback();
@@ -1271,7 +1271,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       ),
                                     ),
                                     Text(
-                                      '${(progress * 100).toInt()}% Tamamlandı',
+                                      '${(progress * 100).toInt()}% Completed',
                                       style: GoogleFonts.poppins(
                                         fontSize: 11,
                                         color: AppColors.textSecondary,

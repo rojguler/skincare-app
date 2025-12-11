@@ -96,7 +96,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           final notes = entry.notes.toLowerCase();
           final date = DateFormat(
             'd MMMM yyyy',
-            'tr_TR',
+            'en_US',
           ).format(entry.createdAt).toLowerCase();
           final searchLower = query.toLowerCase();
 
@@ -113,7 +113,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: AppColors.white,
         title: Text(
-          'Kayıt Sil',
+          'Delete Entry',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -121,7 +121,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           ),
         ),
         content: Text(
-          'Bu kaydı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.',
+          'Are you sure you want to delete this entry? This action cannot be undone.',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -131,7 +131,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'İptal',
+              'Cancel',
               style: GoogleFonts.poppins(color: AppColors.textSecondary),
             ),
           ),
@@ -146,7 +146,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'Kayıt başarıyla silindi',
+                      'Entry successfully deleted',
                       style: GoogleFonts.poppins(),
                     ),
                     backgroundColor: AppColors.success,
@@ -162,7 +162,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'Kayıt silinirken hata oluştu',
+                      'Error deleting entry',
                       style: GoogleFonts.poppins(),
                     ),
                     backgroundColor: AppColors.error,
@@ -181,7 +181,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
               ),
             ),
             child: Text(
-              'Sil',
+              'Delete',
               style: GoogleFonts.poppins(color: AppColors.white),
             ),
           ),
@@ -196,7 +196,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           ? '${entry.notes.substring(0, 50)}...'
           : entry.notes;
     }
-    return 'Cilt bakım rutini tamamlandı';
+    return 'Skincare routine completed';
   }
 
   Color _getEntryColor(SkincareEntry entry) {
@@ -234,7 +234,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           ),
         ),
         title: Text(
-          'Tüm Kayıtlar',
+          'All Entries',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -275,7 +275,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                 child: TextField(
                   onChanged: _filterEntries,
                   decoration: InputDecoration(
-                    hintText: 'Kayıtlarda ara...',
+                    hintText: 'Search entries...',
                     hintStyle: GoogleFonts.poppins(
                       color: AppColors.textSecondary,
                       fontSize: 14,
@@ -312,7 +312,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                 child: Row(
                   children: [
                     Text(
-                      '${_filteredEntries.length} kayıt bulundu',
+                      '${_filteredEntries.length} entries found',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.textSecondary,
@@ -321,7 +321,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                     const Spacer(),
                     if (_searchQuery.isNotEmpty)
                       Text(
-                        '"$_searchQuery" için arama sonuçları',
+                        'Search results for "$_searchQuery"',
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: AppColors.primary,
@@ -369,8 +369,8 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           const SizedBox(height: 16),
           Text(
             _searchQuery.isNotEmpty
-                ? 'Arama sonucu bulunamadı'
-                : 'Henüz kayıt yok',
+                ? 'No search results found'
+                : 'No entries yet',
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -380,8 +380,8 @@ class _AllEntriesPageState extends State<AllEntriesPage>
           const SizedBox(height: 8),
           Text(
             _searchQuery.isNotEmpty
-                ? 'Farklı anahtar kelimeler deneyin'
-                : 'İlk cilt bakım kaydını oluştur',
+                ? 'Try different keywords'
+                : 'Create your first skincare entry',
             style: GoogleFonts.poppins(
               fontSize: 14,
               color: AppColors.textSecondary,
@@ -409,7 +409,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                 ),
               ),
               child: Text(
-                'İlk Kayıt Ekle',
+                'Add First Entry',
                 style: GoogleFonts.poppins(
                   color: AppColors.white,
                   fontWeight: FontWeight.w600,
@@ -468,7 +468,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat('d', 'tr_TR').format(entry.createdAt),
+                        DateFormat('d', 'en_US').format(entry.createdAt),
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -476,7 +476,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                         ),
                       ),
                       Text(
-                        DateFormat('MMM', 'tr_TR').format(entry.createdAt),
+                        DateFormat('MMM', 'en_US').format(entry.createdAt),
                         style: GoogleFonts.poppins(
                           fontSize: 10,
                           color: entryColor,
@@ -496,7 +496,7 @@ class _AllEntriesPageState extends State<AllEntriesPage>
                       Text(
                         DateFormat(
                           'EEEE, d MMMM yyyy',
-                          'tr_TR',
+                          'en_US',
                         ).format(entry.createdAt),
                         style: GoogleFonts.poppins(
                           fontSize: 14,

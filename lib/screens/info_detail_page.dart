@@ -351,7 +351,7 @@ class _InfoDetailPageState extends State<InfoDetailPage>
               ),
               const SizedBox(width: 16),
               Text(
-                'Faydalar',
+                'Benefits',
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -436,7 +436,7 @@ class _InfoDetailPageState extends State<InfoDetailPage>
 
           // How to Use Section
           Text(
-            'Nasıl Kullanılır',
+            'How to Use',
             style: GoogleFonts.poppins(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -508,7 +508,7 @@ class _InfoDetailPageState extends State<InfoDetailPage>
               ),
               const SizedBox(width: 16),
               Text(
-                'Kullanım Önerileri',
+                'Usage Tips',
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -574,7 +574,7 @@ class _InfoDetailPageState extends State<InfoDetailPage>
               ),
               const SizedBox(width: 16),
               Text(
-                'İyi Giden Bileşenler',
+                'Compatible Ingredients',
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

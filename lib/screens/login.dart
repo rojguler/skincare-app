@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage>
     if (!_validateForm()) {
       ErrorHandler.showErrorSnackBar(
         context,
-        'Lütfen tüm alanları doğru şekilde doldurun',
+        'Please fill in all fields correctly',
       );
       return;
     }
@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage>
         // Show success message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('✅ Hoş geldin! Giriş başarılı'),
+            content: const Text('✅ Welcome! Login successful'),
             backgroundColor: AppColors.success,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
@@ -176,14 +176,14 @@ class _LoginPageState extends State<LoginPage>
       _logger.error('Network error during login', error: e);
       ErrorHandler.showErrorSnackBar(
         context,
-        'İnternet bağlantınızı kontrol edin',
+        'Check your internet connection',
         onRetry: _handleLogin,
       );
     } catch (e) {
       _logger.error('Unexpected error during login', error: e);
       ErrorHandler.showErrorSnackBar(
         context,
-        'Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.',
+        'An unexpected error occurred. Please try again.',
       );
     } finally {
       if (mounted) {
@@ -290,7 +290,7 @@ class _LoginPageState extends State<LoginPage>
 
                     // Simple Title
                     Text(
-                      'Hoş Geldin!',
+                      'Welcome Back!',
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
@@ -301,7 +301,7 @@ class _LoginPageState extends State<LoginPage>
                     const SizedBox(height: 8),
 
                     Text(
-                      'Hesabına giriş yap',
+                      'Log in to your account',
                       style: GoogleFonts.poppins(
                         fontSize: 16,
                         color: AppColors.textSecondary,
@@ -332,7 +332,7 @@ class _LoginPageState extends State<LoginPage>
                               fontSize: 16,
                             ),
                             decoration: InputDecoration(
-                              hintText: 'E-posta',
+                              hintText: 'Email',
                               hintStyle: GoogleFonts.poppins(
                                 color: AppColors.textSecondary,
                                 fontSize: 16,
@@ -370,7 +370,7 @@ class _LoginPageState extends State<LoginPage>
                               fontSize: 16,
                             ),
                             decoration: InputDecoration(
-                              hintText: 'Şifre',
+                              hintText: 'Password',
                               hintStyle: GoogleFonts.poppins(
                                 color: AppColors.textSecondary,
                                 fontSize: 16,
@@ -426,7 +426,7 @@ class _LoginPageState extends State<LoginPage>
                                     ),
                                   )
                                 : Text(
-                                    'Giriş Yap',
+                                    'Log In',
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -444,7 +444,7 @@ class _LoginPageState extends State<LoginPage>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Hesabın yok mu? ',
+                          'Don\'t have an account? ',
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             color: AppColors.textSecondary,
@@ -485,7 +485,7 @@ class _LoginPageState extends State<LoginPage>
                             );
                           },
                           child: Text(
-                            'Kayıt Ol',
+                            'Sign Up',
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               color: AppColors.pink,

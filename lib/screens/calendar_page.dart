@@ -184,7 +184,7 @@ class _CalendarPageState extends State<CalendarPage>
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Yeni Rutin Ekle',
+          'Add New Routine',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -192,7 +192,7 @@ class _CalendarPageState extends State<CalendarPage>
           ),
         ),
         content: Text(
-          'Rutin ekleme özelliği yakında gelecek!',
+          'Routine adding feature coming soon!',
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: AppColors.textSecondary,
@@ -202,7 +202,7 @@ class _CalendarPageState extends State<CalendarPage>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Tamam',
+              'OK',
               style: GoogleFonts.poppins(
                 color: AppColors.pink,
                 fontWeight: FontWeight.w600,
@@ -254,7 +254,7 @@ class _CalendarPageState extends State<CalendarPage>
                   ),
                 ),
                 title: Text(
-                  'Takvim',
+                  'Calendar',
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -288,7 +288,7 @@ class _CalendarPageState extends State<CalendarPage>
                           MaterialPageRoute(builder: (_) => AddEntryPage()),
                         );
                       },
-                      tooltip: 'Yeni Kayıt',
+                      tooltip: 'New Entry',
                     ),
                   ),
                 ],
@@ -342,7 +342,7 @@ class _CalendarPageState extends State<CalendarPage>
                           Expanded(
                             child: _buildStatCard(
                               icon: Icons.calendar_today,
-                              title: 'Toplam Kayıt',
+                              title: 'Total Entries',
                               value: '$_totalEntries',
                               color: AppColors.pink,
                             ),
@@ -351,7 +351,7 @@ class _CalendarPageState extends State<CalendarPage>
                           Expanded(
                             child: _buildStatCard(
                               icon: Icons.trending_up,
-                              title: 'Bu Ay',
+                              title: 'This Month',
                               value: '$_currentMonthEntries',
                               color: AppColors.marron,
                             ),
@@ -360,7 +360,7 @@ class _CalendarPageState extends State<CalendarPage>
                           Expanded(
                             child: _buildStatCard(
                               icon: Icons.favorite,
-                              title: 'En Çok Kullanılan',
+                              title: 'Most Used',
                               value: _mostUsedProduct.isNotEmpty
                                   ? _mostUsedProduct
                                   : '-',
@@ -375,8 +375,8 @@ class _CalendarPageState extends State<CalendarPage>
                           Expanded(
                             child: _buildStatCard(
                               icon: Icons.local_fire_department,
-                              title: 'Günlük Seri',
-                              value: '$_streakDays gün',
+                              title: 'Current Streak',
+                              value: '$_streakDays days',
                               color: AppColors.pink,
                             ),
                           ),
@@ -384,7 +384,7 @@ class _CalendarPageState extends State<CalendarPage>
                           Expanded(
                             child: _buildStatCard(
                               icon: Icons.repeat,
-                              title: 'Aktif Rutinler',
+                              title: 'Active Routines',
                               value: '$_totalRoutines',
                               color: AppColors.marron,
                             ),
@@ -439,7 +439,7 @@ class _CalendarPageState extends State<CalendarPage>
                                     ),
                                     const SizedBox(width: 12),
                                     Text(
-                                      'Bu Ayın İlerlemesi',
+                                      'Monthly Progress',
                                       style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -448,7 +448,7 @@ class _CalendarPageState extends State<CalendarPage>
                                     ),
                                     const Spacer(),
                                     Text(
-                                      '$_currentMonthEntries gün',
+                                      '$_currentMonthEntries days',
                                       style: GoogleFonts.poppins(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w600,
@@ -615,7 +615,7 @@ class _CalendarPageState extends State<CalendarPage>
                             size: 20,
                           ),
                           label: Text(
-                            'Yeni Kayıt',
+                            'New Entry',
                             style: GoogleFonts.poppins(
                               color: AppColors.white,
                               fontWeight: FontWeight.w600,
@@ -641,7 +641,7 @@ class _CalendarPageState extends State<CalendarPage>
                             size: 20,
                           ),
                           label: Text(
-                            'Rutin Ekle',
+                            'Add Routine',
                             style: GoogleFonts.poppins(
                               color: AppColors.pink,
                               fontWeight: FontWeight.w600,
@@ -816,7 +816,7 @@ class _CalendarPageState extends State<CalendarPage>
             ),
             const SizedBox(width: 8),
             Text(
-              'Kayıt var',
+              'Entry recorded',
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: AppColors.textSecondary,
@@ -833,7 +833,7 @@ class _CalendarPageState extends State<CalendarPage>
             ),
             const SizedBox(width: 8),
             Text(
-              'Kayıt yok',
+              'No entry',
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: AppColors.textSecondary,
