@@ -112,6 +112,7 @@ GlowSun is a modern Flutter application designed for personalized skincare routi
 <div align="center">
   <img src="screenshots/login.jpg" width="200" alt="Login Page">
   <img src="screenshots/create.jpg" width="200" alt="Create Account">
+  <img src="screenshots/1.jpg" width="200" alt="Login Screen">
 </div>
 
 ### Profile Page
