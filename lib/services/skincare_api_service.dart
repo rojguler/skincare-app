@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'firestore_service.dart';
+import '../models/product.dart' as p;
 
 class SkincareProduct {
   final String id;
@@ -74,115 +76,115 @@ class SkincareApiService {
       'id': '1',
       'name': 'CeraVe Foaming Facial Cleanser',
       'brand': 'CeraVe',
-      'category': 'Temizleyici',
-      'description': 'Yağlı ve karma ciltler için köpüklü yüz temizleyici',
+      'category': 'Cleanser',
+      'description': 'Foaming facial cleanser for oily and combination skin',
       'imageUrl': 'https://via.placeholder.com/300x300?text=CeraVe+Cleanser',
       'price': 89.90,
       'currency': 'TL',
       'ingredients': ['Ceramides', 'Hyaluronic Acid', 'Niacinamide'],
-      'skinTypes': ['Yağlı', 'Karma'],
-      'benefits': ['Gözenek Temizliği', 'Nem Dengesi', 'Cilt Bariyeri'],
+      'skinTypes': ['Oily', 'Combination'],
+      'benefits': ['Pore Cleansing', 'Moisture Balance', 'Skin Barrier'],
       'rating': 4.5,
       'reviewCount': 1250,
       'barcode': '1234567890123',
       'size': '236ml',
-      'texture': 'Köpüklü',
-      'scent': 'Kokusuz',
+      'texture': 'Foaming',
+      'scent': 'Fragrance-Free',
     },
     {
       'id': '2',
       'name': 'The Ordinary Niacinamide 10% + Zinc 1%',
       'brand': 'The Ordinary',
       'category': 'Serum',
-      'description': 'Gözenekleri küçültmek ve yağ üretimini kontrol etmek için serum',
+      'description': 'Serum to minimize pores and control oil production',
       'imageUrl': 'https://via.placeholder.com/300x300?text=The+Ordinary+Niacinamide',
       'price': 45.00,
       'currency': 'TL',
       'ingredients': ['Niacinamide', 'Zinc PCA'],
-      'skinTypes': ['Yağlı', 'Karma', 'Hassas'],
-      'benefits': ['Gözenek Küçültme', 'Yağ Kontrolü', 'Cilt Dengeleme'],
+      'skinTypes': ['Oily', 'Combination', 'Sensitive'],
+      'benefits': ['Pore Minimizing', 'Oil Control', 'Skin Balancing'],
       'rating': 4.3,
       'reviewCount': 890,
       'barcode': '1234567890124',
       'size': '30ml',
-      'texture': 'Sıvı',
-      'scent': 'Kokusuz',
+      'texture': 'Liquid',
+      'scent': 'Fragrance-Free',
     },
     {
       'id': '3',
       'name': 'La Roche-Posay Toleriane Double Repair Moisturizer',
       'brand': 'La Roche-Posay',
-      'category': 'Nemlendirici',
-      'description': 'Hassas ciltler için onarıcı nemlendirici krem',
+      'category': 'Moisturizer',
+      'description': 'Repairing moisturizer cream for sensitive skin',
       'imageUrl': 'https://via.placeholder.com/300x300?text=La+Roche-Posay+Moisturizer',
       'price': 129.90,
       'currency': 'TL',
       'ingredients': ['Ceramides', 'Niacinamide', 'Thermal Water'],
-      'skinTypes': ['Hassas', 'Kuru', 'Normal'],
-      'benefits': ['Cilt Onarımı', 'Nemlendirme', 'Bariyer Güçlendirme'],
+      'skinTypes': ['Sensitive', 'Dry', 'Normal'],
+      'benefits': ['Skin Repair', 'Moisturizing', 'Barrier Strengthening'],
       'rating': 4.7,
       'reviewCount': 2100,
       'barcode': '1234567890125',
       'size': '75ml',
-      'texture': 'Krem',
-      'scent': 'Kokusuz',
+      'texture': 'Cream',
+      'scent': 'Fragrance-Free',
     },
     {
       'id': '4',
       'name': 'Paula\'s Choice 2% BHA Liquid Exfoliant',
       'brand': 'Paula\'s Choice',
-      'category': 'Eksfoliyant',
-      'description': 'Siyah nokta ve gözenekler için BHA eksfoliyant',
+      'category': 'Exfoliant',
+      'description': 'BHA exfoliant for blackheads and pores',
       'imageUrl': 'https://via.placeholder.com/300x300?text=Paula+Choice+BHA',
       'price': 199.00,
       'currency': 'TL',
       'ingredients': ['Salicylic Acid', 'Green Tea Extract'],
-      'skinTypes': ['Yağlı', 'Karma', 'Hassas'],
-      'benefits': ['Siyah Nokta Temizliği', 'Gözenek Açma', 'Cilt Yenileme'],
+      'skinTypes': ['Oily', 'Combination', 'Sensitive'],
+      'benefits': ['Blackhead Cleansing', 'Pore Opening', 'Skin Renewal'],
       'rating': 4.6,
       'reviewCount': 3200,
       'barcode': '1234567890126',
       'size': '118ml',
-      'texture': 'Sıvı',
-      'scent': 'Kokusuz',
+      'texture': 'Liquid',
+      'scent': 'Fragrance-Free',
     },
     {
       'id': '5',
       'name': 'Neutrogena Ultra Sheer Dry-Touch Sunscreen SPF 50+',
       'brand': 'Neutrogena',
-      'category': 'Güneş Kremi',
-      'description': 'Yağsız, hızlı emilen güneş koruyucu krem',
+      'category': 'Sunscreen',
+      'description': 'Oil-free, fast-absorbing sunscreen cream',
       'imageUrl': 'https://via.placeholder.com/300x300?text=Neutrogena+Sunscreen',
       'price': 79.90,
       'currency': 'TL',
       'ingredients': ['Zinc Oxide', 'Titanium Dioxide'],
-      'skinTypes': ['Tüm Cilt Tipleri'],
-      'benefits': ['UV Koruması', 'Yağsız Formül', 'Hızlı Emilim'],
+      'skinTypes': ['All Skin Types'],
+      'benefits': ['UV Protection', 'Oil-Free Formula', 'Fast Absorption'],
       'rating': 4.4,
       'reviewCount': 1800,
       'barcode': '1234567890127',
       'size': '88ml',
-      'texture': 'Krem',
-      'scent': 'Kokusuz',
+      'texture': 'Cream',
+      'scent': 'Fragrance-Free',
     },
     {
       'id': '6',
       'name': 'The Inkey List Retinol Serum',
       'brand': 'The Inkey List',
       'category': 'Anti-Aging',
-      'description': 'Kırışıklık karşıtı retinol serum',
+      'description': 'Anti-wrinkle retinol serum',
       'imageUrl': 'https://via.placeholder.com/300x300?text=Inkey+List+Retinol',
       'price': 89.00,
       'currency': 'TL',
       'ingredients': ['Retinol', 'Squalane'],
-      'skinTypes': ['Normal', 'Kuru', 'Karma'],
-      'benefits': ['Kırışıklık Azaltma', 'Cilt Yenileme', 'Anti-Aging'],
+      'skinTypes': ['Normal', 'Dry', 'Combination'],
+      'benefits': ['Wrinkle Reduction', 'Skin Renewal', 'Anti-Aging'],
       'rating': 4.2,
       'reviewCount': 950,
       'barcode': '1234567890128',
       'size': '30ml',
       'texture': 'Serum',
-      'scent': 'Kokusuz',
+      'scent': 'Fragrance-Free',
     },
   ];
 
@@ -197,33 +199,53 @@ class SkincareApiService {
     int limit = 20,
   }) async {
     try {
-      // Gerçek API çağrısı
-      final response = await http.get(
-        Uri.parse('$_baseUrl/products?${_buildQueryParams({
-          'q': query,
-          'category': category,
-          'skinType': skinType,
-          'brand': brand,
-          'minPrice': minPrice?.toString(),
-          'maxPrice': maxPrice?.toString(),
-          'limit': limit.toString(),
-        })}'),
-        headers: {'accept': 'application/json'},
-      );
+      print('🔍 Searching via Firestore...');
+      // Firestore üzerinden arama yap
+      final products = await FirestoreService().searchProducts(query ?? '');
+      
+      // Client-side filtreleme (FirestoreService basit arama yapıyor)
+      final filtered = products.where((product) {
+        if (category != null && product.category != category) return false;
+        if (brand != null && product.brand?.toLowerCase() != brand.toLowerCase()) return false;
+        // Fiyat filtresi eklenebilir
+        return true;
+      }).toList();
 
-      if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body);
-        return data.map((json) => SkincareProduct.fromJson(json)).toList();
-      } else {
-        print('API hatası: ${response.statusCode}');
-        // Fallback olarak mock data kullan
-        return _getMockProducts(query, category, skinType, brand, minPrice, maxPrice);
+      if (filtered.isNotEmpty) {
+        print('✅ Firestore returned ${filtered.length} products');
+        return filtered.map(_mapToSkincareProduct).toList();
       }
+
+      print('⚠️ Firestore returned empty, trying fallback mock data');
+      return _getMockProducts(query, category, skinType, brand, minPrice, maxPrice);
+
     } catch (e) {
-      print('Ürün arama hatası: $e');
-      // Fallback olarak mock data kullan
+      print('❌ Firestore search error: $e');
       return _getMockProducts(query, category, skinType, brand, minPrice, maxPrice);
     }
+  }
+
+  // Helper to map Product model to local SkincareProduct
+  static SkincareProduct _mapToSkincareProduct(p.Product product) {
+    return SkincareProduct(
+      id: product.id,
+      name: product.name,
+      brand: product.brand ?? '',
+      category: product.category ?? '',
+      description: product.description ?? '',
+      imageUrl: product.imageUrl ?? '',
+      price: product.price?.toDouble() ?? 0.0,
+      currency: product.currency ?? 'TL',
+      ingredients: product.ingredients ?? [],
+      skinTypes: product.skinTypes ?? [],
+      benefits: product.benefits ?? [],
+      rating: product.rating?.toDouble() ?? 0.0,
+      reviewCount: product.reviewCount ?? 0,
+      barcode: product.barcode ?? '',
+      size: product.size ?? '',
+      texture: product.texture ?? '',
+      scent: product.scent ?? '',
+    );
   }
 
   // Mock data fallback metodu
@@ -274,28 +296,26 @@ class SkincareApiService {
   // Ürün detayı getir
   static Future<SkincareProduct?> getProductById(String id) async {
     try {
-      // Gerçek API çağrısı
-      final response = await http.get(
-        Uri.parse('$_baseUrl/products/$id'),
-        headers: {'accept': 'application/json'},
-      );
-
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> data = json.decode(response.body);
-        return SkincareProduct.fromJson(data);
-      } else {
-        print('API hatası: ${response.statusCode}');
-        // Fallback olarak mock data kullan
-        final product = _mockProducts.firstWhere(
-          (p) => p['id'] == id,
-          orElse: () => {},
-        );
-        if (product.isEmpty) return null;
-        return SkincareProduct.fromJson(product);
+      // Firestore'dan arama yap (SearchProducts içinde ID ile arama yok ama tümünü çekip bulabiliriz ya da getProducts kullanabiliriz) (Şimdilik ID servisi yok, search kullanalım)
+      // Ancak FirestoreService'de getProducts var.
+      
+      // Aslında FirestoreService getProductById yok, ama ekleyebiliriz ya da getProducts().firstWhere kullanabiliriz.
+      // FirestoreService'e getProductById eklemedim (doc ID ile çekmek için). 
+      // Şimdilik getAll yapıp filtreleyelim (küçük veri, sorun yok)
+      
+      final products = await FirestoreService().getProducts();
+      final product = products.firstWhere((p) => p.id == id, orElse: () => p.Product(id: '', name: ''));
+      
+      if (product.id.isNotEmpty) {
+         return _mapToSkincareProduct(product);
       }
+      
+      return null; 
+      
+      // Note: Daha verimli olması için FirestoreService'e getProductById eklemek lazım ama şimdilik yeterli.
     } catch (e) {
-      print('Ürün detay hatası: $e');
-      // Fallback olarak mock data kullan
+      print('Product detail error: $e');
+       // Fallback
       final product = _mockProducts.firstWhere(
         (p) => p['id'] == id,
         orElse: () => {},
@@ -308,28 +328,20 @@ class SkincareApiService {
   // Barkod ile ürün arama
   static Future<SkincareProduct?> getProductByBarcode(String barcode) async {
     try {
-      // Gerçek API çağrısı
-      final response = await http.get(
-        Uri.parse('$_baseUrl/products/barcode/$barcode'),
-        headers: {'accept': 'application/json'},
-      );
+      final product = await FirestoreService().getProductByBarcode(barcode);
+      if (product != null) {
+        return _mapToSkincareProduct(product);
+      }
 
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> data = json.decode(response.body);
-        return SkincareProduct.fromJson(data);
-      } else {
-        print('API hatası: ${response.statusCode}');
-        // Fallback olarak mock data kullan
-        final product = _mockProducts.firstWhere(
+      // Fallback
+      final mockProduct = _mockProducts.firstWhere(
           (p) => p['barcode'] == barcode,
           orElse: () => {},
         );
-        if (product.isEmpty) return null;
-        return SkincareProduct.fromJson(product);
-      }
+      if (mockProduct.isEmpty) return null;
+      return SkincareProduct.fromJson(mockProduct);
     } catch (e) {
-      print('Barkod arama hatası: $e');
-      // Fallback olarak mock data kullan
+      print('Barcode search error: $e');
       final product = _mockProducts.firstWhere(
         (p) => p['barcode'] == barcode,
         orElse: () => {},
@@ -346,18 +358,18 @@ class SkincareApiService {
       final response = await http.get(
         Uri.parse('$_baseUrl/categories'),
         headers: {'accept': 'application/json'},
-      );
+      ).timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
         return data.map((category) => category.toString()).toList();
       } else {
-        print('API hatası: ${response.statusCode}');
+        print('API error: ${response.statusCode}');
         // Fallback olarak mock data kullan
-        return ['Temizleyici', 'Serum', 'Nemlendirici', 'Eksfoliyant', 'Güneş Kremi', 'Anti-Aging', 'Tonik', 'Maske'];
+        return ['Cleanser', 'Serum', 'Moisturizer', 'Exfoliant', 'Sunscreen', 'Anti-Aging', 'Toner', 'Mask'];
       }
     } catch (e) {
-      print('Kategori listesi hatası: $e');
+        print('Category list error: $e');
       // Fallback olarak mock data kullan
       return ['Temizleyici', 'Serum', 'Nemlendirici', 'Eksfoliyant', 'Güneş Kremi', 'Anti-Aging', 'Tonik', 'Maske'];
     }
@@ -370,18 +382,18 @@ class SkincareApiService {
       final response = await http.get(
         Uri.parse('$_baseUrl/brands'),
         headers: {'accept': 'application/json'},
-      );
+      ).timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
         return data.map((brand) => brand.toString()).toList();
       } else {
-        print('API hatası: ${response.statusCode}');
+        print('API error: ${response.statusCode}');
         // Fallback olarak mock data kullan
         return ['CeraVe', 'The Ordinary', 'La Roche-Posay', 'Paula\'s Choice', 'Neutrogena', 'The Inkey List', 'Olay', 'Nivea'];
       }
     } catch (e) {
-      print('Marka listesi hatası: $e');
+        print('Brand list error: $e');
       // Fallback olarak mock data kullan
       return ['CeraVe', 'The Ordinary', 'La Roche-Posay', 'Paula\'s Choice', 'Neutrogena', 'The Inkey List', 'Olay', 'Nivea'];
     }
@@ -395,7 +407,7 @@ class SkincareApiService {
         limit: 10,
       );
     } catch (e) {
-      print('Önerilen ürünler hatası: $e');
+      print('Recommended products error: $e');
       return [];
     }
   }
@@ -412,11 +424,11 @@ class SkincareApiService {
         print('✅ SkincareAPI bağlantısı başarılı!');
         return true;
       } else {
-        print('❌ SkincareAPI bağlantı hatası: ${response.statusCode}');
+        print('❌ SkincareAPI connection error: ${response.statusCode}');
         return false;
       }
     } catch (e) {
-      print('❌ SkincareAPI bağlantı hatası: $e');
+      print('❌ SkincareAPI connection error: $e');
       return false;
     }
   }

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import '../core/theme.dart';
 import '../services/skincare_api_service.dart';
+import '../services/firestore_service.dart';
 
 class ProfilePageModern extends StatefulWidget {
   const ProfilePageModern({Key? key}) : super(key: key);
@@ -313,7 +314,7 @@ class _ProfilePageModernState extends State<ProfilePageModern>
                         _name = newValue;
                       });
                       _saveName(newValue);
-                    } else if (label == 'E-posta') {
+                    } else if (label == 'Email') {
                       setState(() {
                         _email = newValue;
                       });
@@ -755,6 +756,31 @@ class _ProfilePageModernState extends State<ProfilePageModern>
             Icons.api,
             () {
               _testSkincareApi();
+            },
+          ),
+          _buildDivider(),
+          _buildSettingsItem(
+            'Developer: Force Seed Data',
+            Icons.cloud_upload_outlined,
+            () async {
+              showDialog(
+                context: context, 
+                builder: (c) => const Center(child: CircularProgressIndicator())
+              );
+              try {
+                // Import FirestoreService before using
+                // Note: Ensure imports are added at file top if not present
+                await FirestoreService().seedInitialData(force: true);
+                Navigator.pop(context); // Close loading
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('✅ Data successfully seeded! Check Firestore Console.'))
+                );
+              } catch (e) {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('❌ Error seeding: $e'), backgroundColor: Colors.red)
+                );
+              }
             },
           ),
           _buildDivider(),

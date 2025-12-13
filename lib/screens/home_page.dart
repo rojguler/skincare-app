@@ -853,7 +853,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Skincare Bilgileri',
+                                    'Skincare Information',
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -862,7 +862,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    'Cilt bakım bileşenleri hakkında detaylı bilgi',
+                                    'Detailed information about skincare components',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       color:
@@ -987,7 +987,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Cilt Tipi Testi',
+                                          'Skin Type Quiz',
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
@@ -996,7 +996,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
-                                          '12 soru ile cilt tipinizi keşfedin',
+                                          'Discover your skin type with 12 questions',
                                           style: GoogleFonts.poppins(
                                             fontSize: 12,
                                             color: AppColors.textSecondary,
@@ -1018,7 +1018,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             ),
                                           ),
                                           child: Text(
-                                            '%95 Doğruluk',
+                                            '%95 Accuracy',
                                             style: GoogleFonts.poppins(
                                               fontSize: 10,
                                               fontWeight: FontWeight.w600,
@@ -1053,9 +1053,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
                     const SizedBox(height: 24),
 
-                    // --- RUTIN REHBERI SECTION ---
+                    // --- ROUTINE GUIDE SECTION ---
                     Text(
-                      'Rutin Rehberi',
+                      'Routine Guide',
                       style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -1074,10 +1074,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           Expanded(
                             child: _buildRoutineCard(
                               icon: Icons.wb_sunny_outlined,
-                              title: 'Sabah Rutini',
-                              subtitle: '5 adım',
+                              title: 'Morning Routine',
+                              subtitle: '5 steps',
                               description:
-                                  'Temizlik → Tonik → Serum → Nemlendirici → SPF',
+                                  'Cleanser → Toner → Serum → Moisturizer → SPF',
                               color: AppColors.yellow,
                               onTap: () {
                                 _hapticFeedback();
@@ -1090,10 +1090,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           Expanded(
                             child: _buildRoutineCard(
                               icon: Icons.nightlight_outlined,
-                              title: 'Akşam Rutini',
-                              subtitle: '5 adım',
+                              title: 'Evening Routine',
+                              subtitle: '5 steps',
                               description:
-                                  'Temizlik → Tonik → Serum → Maske → Gece Kremi',
+                                  'Cleanser → Toner → Serum → Mask → Night Cream',
                               color: AppColors.pink,
                               onTap: () {
                                 _hapticFeedback();
@@ -1207,7 +1207,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             ),
                                           ),
                                           Text(
-                                            'Cilt bakım rutinin devam ediyor...',
+                                            'Your skincare routine is in progress...',
                                             style: GoogleFonts.poppins(
                                               fontSize: 12,
                                               color: AppColors.textSecondary,
@@ -1314,7 +1314,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Günlük Alışkanlıklar',
+                                'Daily Habits',
                                 style: GoogleFonts.poppins(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -1331,7 +1331,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   );
                                 },
                                 child: Text(
-                                  'Tümünü Gör',
+                                  'See All',
                                   style: GoogleFonts.poppins(
                                     fontSize: 14,
                                     color: AppColors.pink,

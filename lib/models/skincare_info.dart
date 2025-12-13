@@ -58,7 +58,7 @@ class SkincareInfoData {
     ),
     SkincareInfo(
       id: 'vitamin_c',
-      title: 'VİTAMİN C',
+      title: 'VITAMIN C',
       shortDescription: 'Antioxidant and brightness',
       longDescription:
           'Vitamin C is a powerful antioxidant that protects skin from free radicals and provides radiance.',
@@ -116,7 +116,7 @@ class SkincareInfoData {
     ),
     SkincareInfo(
       id: 'niacinamide',
-      title: 'NİACİNAMİDE',
+      title: 'NIACINAMIDE',
       shortDescription: 'Pore tightening',
       longDescription:
           'Niacinamide is a versatile ingredient that tightens pores and evens skin tone.',

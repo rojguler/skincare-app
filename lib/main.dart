@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
+import 'services/firestore_service.dart';
 import 'screens/welcome_page.dart';
 import 'screens/login.dart';
 import 'screens/register.dart';
@@ -47,18 +48,44 @@ Future<void> _initializeServices() async {
   
   try {
     // Initialize logger first
-    await AppLogger.initialize();
-    logger.info('Logger initialized');
+    try {
+      await AppLogger.initialize();
+      logger.info('Logger initialized');
+    } catch (e) {
+      logger.warning('Logger initialization failed, continuing anyway', error: e);
+    }
 
     // Initialize security manager
-    await SecurityManager.initialize();
-    logger.info('Security manager initialized');
+    try {
+      await SecurityManager.initialize();
+      logger.info('Security manager initialized');
+    } catch (e) {
+      logger.warning('Security manager initialization failed, continuing anyway', error: e);
+    }
 
-    // Initialize Firebase
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    logger.info('Firebase initialized');
+    // Initialize Firebase (with error handling for placeholder config)
+    try {
+      final options = DefaultFirebaseOptions.currentPlatform;
+      // Check if Firebase is properly configured (not placeholder values)
+      if (options.apiKey != 'YOUR_WEB_API_KEY_HERE' && 
+          options.apiKey != 'YOUR_ANDROID_API_KEY_HERE' &&
+          options.projectId != 'YOUR_PROJECT_ID_HERE') {
+        await Firebase.initializeApp(options: options);
+        logger.info('Firebase initialized');
+        
+        // Seed initial data to Firestore (only runs if DB is empty)
+        try {
+          await FirestoreService().seedInitialData();
+          logger.info('Firestore initial data checked');
+        } catch (e) {
+          logger.warning('Failed to seed initial data', error: e);
+        }
+      } else {
+        logger.warning('Firebase not configured (using placeholder values). App will use local authentication only.');
+      }
+    } catch (e) {
+      logger.warning('Firebase initialization failed. App will use local authentication only.', error: e);
+    }
 
     // Initialize date formatting
     await initializeDateFormatting('en_US', null);

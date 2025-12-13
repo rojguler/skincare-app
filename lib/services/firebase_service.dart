@@ -29,11 +29,11 @@ class FirebaseService {
       
       // Validate input
       if (!SecurityManager.isValidEmail(email)) {
-        throw AuthenticationException(message: 'Geçersiz e-posta formatı');
+        throw AuthenticationException(message: 'Invalid email format');
       }
       
       if (password.length < 6) {
-        throw AuthenticationException(message: 'Şifre en az 6 karakter olmalı');
+        throw AuthenticationException(message: 'Password must be at least 6 characters');
       }
       
       final credential = await _auth.signInWithEmailAndPassword(
@@ -51,7 +51,7 @@ class FirebaseService {
       throw AuthenticationException(message: errorMessage);
     } catch (e) {
       logger.error('Unexpected error during sign in', error: e);
-      throw AuthenticationException(message: 'Giriş yapılamadı. Lütfen tekrar deneyin.');
+      throw AuthenticationException(message: 'Unable to sign in. Please try again.');
     }
   }
 
@@ -69,16 +69,16 @@ class FirebaseService {
     } on FirebaseAuthException catch (e) {
       // Firebase Authentication hatalarını fırlat
       if (e.code == 'weak-password') {
-        throw Exception('Şifre çok zayıf! En az 6 karakter olmalı.');
+        throw Exception('Password is too weak! Must be at least 6 characters.');
       } else if (e.code == 'email-already-in-use') {
-        throw Exception('Bu e-posta adresi zaten kullanımda!');
+        throw Exception('This email address is already in use!');
       } else if (e.code == 'invalid-email') {
-        throw Exception('Geçersiz e-posta adresi!');
+        throw Exception('Invalid email address!');
       } else {
-        throw Exception('Kayıt oluşturulamadı: ${e.message}');
+        throw Exception('Unable to create account: ${e.message}');
       }
     } catch (e) {
-      throw Exception('Bir hata oluştu. Lütfen tekrar deneyin.');
+      throw Exception('An error occurred. Please try again.');
     }
   }
 
@@ -312,7 +312,7 @@ class FirebaseService {
       // Kullanıcı giriş yapmış mı kontrol et
       final user = getCurrentUser();
       if (user == null) {
-        print('⚠️ Kullanıcı giriş yapmamış, Firebase sync atlanıyor');
+        print('⚠️ User not logged in, skipping Firebase sync');
         return; // Kullanıcı yoksa sync yapma
       }
 
@@ -343,7 +343,7 @@ class FirebaseService {
       await saveProfile(profile);
 
       await logEvent('data_synced_to_cloud');
-      print('✅ Firebase sync başarılı');
+      print('✅ Firebase sync successful');
     } catch (e) {
       print('❌ Sync to cloud error: $e');
     }
@@ -354,7 +354,7 @@ class FirebaseService {
       // Kullanıcı giriş yapmış mı kontrol et
       final user = getCurrentUser();
       if (user == null) {
-        print('⚠️ Kullanıcı giriş yapmamış, Firebase sync atlanıyor');
+        print('⚠️ User not logged in, skipping Firebase sync');
         return; // Kullanıcı yoksa sync yapma
       }
 
@@ -373,7 +373,7 @@ class FirebaseService {
       });
 
       await logEvent('data_synced_from_cloud');
-      print('✅ Firebase\'den veriler cekildi');
+      print('✅ Data retrieved from Firebase');
     } catch (e) {
       print('❌ Sync from cloud error: $e');
     }

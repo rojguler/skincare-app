@@ -153,7 +153,7 @@ class _RegisterPageState extends State<RegisterPage>
     _hapticFeedback();
 
     try {
-      print('📝 KAYIT BAŞLADI: ${_emailCtrl.text.trim()}');
+      print('📝 REGISTRATION STARTED: ${_emailCtrl.text.trim()}');
       
       // Önce Firebase ile dene
       try {
@@ -161,7 +161,7 @@ class _RegisterPageState extends State<RegisterPage>
           _emailCtrl.text.trim(),
           _passCtrl.text.trim(),
         );
-        print('✅ FIREBASE KAYIT BAŞARILI!');
+        print('✅ FIREBASE REGISTRATION SUCCESSFUL!');
         
         // Profil bilgilerini Firebase'e kaydet
         await FirebaseService.saveProfile({
@@ -170,7 +170,7 @@ class _RegisterPageState extends State<RegisterPage>
           'registeredAt': DateTime.now().toIso8601String(),
         });
       } catch (firebaseError) {
-        print('⚠️ Firebase kayıt hatası, Local Auth kullanılıyor...');
+        print('⚠️ Firebase registration error, using Local Auth...');
         
         // Firebase başarısız, local auth kullan
         await LocalAuthService.register(
@@ -178,7 +178,7 @@ class _RegisterPageState extends State<RegisterPage>
           _passCtrl.text.trim(),
           _nameCtrl.text.trim(),
         );
-        print('✅ LOCAL AUTH KAYIT BAŞARILI!');
+        print('✅ LOCAL AUTH REGISTRATION SUCCESSFUL!');
       }
 
       // Profil bilgilerini local'e de kaydet (hybrid)
@@ -210,7 +210,7 @@ class _RegisterPageState extends State<RegisterPage>
         );
       }
     } catch (e) {
-      print('❌ KAYIT HATASI: $e');
+      print('❌ REGISTRATION ERROR: $e');
       
       if (mounted) {
         // Exception mesajını göster

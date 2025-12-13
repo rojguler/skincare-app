@@ -115,7 +115,7 @@ class HomeWidget extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: _buildActionButton(
-            'Takvim',
+            'Calendar',
             Icons.calendar_today_rounded,
             AppColors.marron,
             () {

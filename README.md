@@ -134,8 +134,10 @@ flutter pub get
 
 3. **Firebase configuration:**
 - Create a new project in Firebase Console
-- Add `google-services.json` to `android/app/` folder
-- Add `GoogleService-Info.plist` to `ios/Runner/` folder
+- Copy `lib/firebase_options.example.dart` to `lib/firebase_options.dart`
+- Replace placeholder values in `firebase_options.dart` with your Firebase project credentials
+- Add `google-services.json` to `android/app/` folder (if using Android)
+- Add `GoogleService-Info.plist` to `ios/Runner/` folder (if using iOS)
 
 4. **Run the application:**
 ```bash

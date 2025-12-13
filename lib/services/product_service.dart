@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/product.dart';
+import 'firestore_service.dart';
 
 class ProductService {
   // Cilt Bakım Odaklı API'ler (Gerçek API'ler)
@@ -13,32 +14,55 @@ class ProductService {
   // Cilt Bakım Odaklı Arama Fonksiyonları
   static Future<List<Product>> searchByName(String query) async {
     try {
-      print('🔍 Cilt bakım ürünü aranıyor: $query');
+      print('🔍 Searching skincare product: $query');
       List<Product> results = [];
 
+      // 0. Önce kendi Firestore veritabanımızı kontrol et
+      print('🔍 Checking Firestore first...');
+      final firestoreResults = await FirestoreService().searchProducts(query);
+      if (firestoreResults.isNotEmpty) {
+        print('✅ Firestore returned ${firestoreResults.length} products');
+        return firestoreResults;
+      }
+
       // 1. Önce Beauty API'yi dene (makyaj/cilt bakım ürünleri)
+      print('🔍 Trying Beauty API...');
       results = await _searchBeautyAPI(query);
+      if (results.isNotEmpty) {
+        print('✅ Beauty API returned ${results.length} products');
+        return results;
+      }
 
       // 2. Eğer sonuç yoksa, Unsplash API'yi dene (ürün resimleri için)
+      print('🔍 Trying Unsplash API...');
       if (results.isEmpty) {
         results = await _searchUnsplashAPI(query);
+        if (results.isNotEmpty) {
+          print('✅ Unsplash API returned ${results.length} products');
+          return results;
+        }
       }
 
       // 3. Sonuç yoksa, genel API'yi dene
+      print('🔍 Trying Cosmetics API...');
       if (results.isEmpty) {
         results = await _searchCosmeticsAPI(query);
+        if (results.isNotEmpty) {
+          print('✅ Cosmetics API returned ${results.length} products');
+          return results;
+        }
       }
 
       // 4. Sonuç yoksa, mock data kullan (cilt bakım odaklı)
-      if (results.isEmpty) {
-        results = _getMockProductsByName(query);
-        print('📦 Mock data kullanılıyor: $query');
-      }
-
-      print('✅ ${results.length} cilt bakım ürünü bulundu');
+      print('⚠️ All APIs returned empty, using mock data');
+      results = _getMockProductsByName(query);
+      print('📦 Using ${results.length} mock products for: $query');
+      
+      print('✅ Total ${results.length} skincare products found');
       return results;
     } catch (e) {
-      print('❌ Arama hatası: $e');
+      print('❌ Search error: $e');
+      print('📦 Falling back to mock data');
       return _getMockProductsByName(query);
     }
   }
@@ -46,20 +70,20 @@ class ProductService {
   /// Search product by barcode using cilt bakım API'leri
   static Future<Product?> searchByBarcode(String barcode) async {
     try {
-      print('🔍 Barkod aranıyor: $barcode');
+      print('🔍 Searching barcode: $barcode');
 
       // Önce mock data'dan kontrol et (cilt bakım ürünleri için)
       Product? product = _getMockProductByBarcode(barcode);
       if (product != null) {
-        print('✅ Mock ürün bulundu: ${product.name}');
+        print('✅ Mock product found: ${product.name}');
         return product;
       }
 
       // Gerçek API'lerde barkod arama yapılabilir (şimdilik mock data kullanıyoruz)
-      print('❌ Bu barkod için ürün bulunamadı: $barcode');
+      print('❌ Product not found for this barcode: $barcode');
       return null;
     } catch (e) {
-      print('❌ Barkod arama hatası: $e');
+      print('❌ Barcode search error: $e');
       return null;
     }
   }
@@ -75,14 +99,20 @@ class ProductService {
               'Accept': 'application/json',
             },
           )
-          .timeout(const Duration(seconds: 10));
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        return _parseBeautyAPIResults(data, query);
+        final products = _parseBeautyAPIResults(data, query);
+        if (products.isNotEmpty) {
+          print('✅ Beauty API: ${products.length} products found');
+        }
+        return products;
+      } else {
+        print('⚠️ Beauty API error: ${response.statusCode}');
       }
     } catch (e) {
-      print('Beauty API hatası: $e');
+      print('❌ Beauty API error: $e');
     }
     return [];
   }
@@ -98,14 +128,20 @@ class ProductService {
               'Accept': 'application/json',
             },
           )
-          .timeout(const Duration(seconds: 10));
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        return _parseUnsplashResults(data, query);
+        final products = _parseUnsplashResults(data, query);
+        if (products.isNotEmpty) {
+          print('✅ Unsplash API: ${products.length} images found');
+        }
+        return products;
+      } else {
+        print('⚠️ Unsplash API error: ${response.statusCode}');
       }
     } catch (e) {
-      print('Unsplash API hatası: $e');
+      print('❌ Unsplash API error: $e');
     }
     return [];
   }
@@ -121,14 +157,20 @@ class ProductService {
               'Accept': 'application/json',
             },
           )
-          .timeout(const Duration(seconds: 10));
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        return _parseCosmeticsResults(data, query);
+        final products = _parseCosmeticsResults(data, query);
+        if (products.isNotEmpty) {
+          print('✅ Cosmetics API: ${products.length} products found');
+        }
+        return products;
+      } else {
+        print('⚠️ Cosmetics API error: ${response.statusCode}');
       }
     } catch (e) {
-      print('Cosmetics API hatası: $e');
+      print('❌ Cosmetics API error: $e');
     }
     return [];
   }
@@ -153,8 +195,8 @@ class ProductService {
             unit: productData['size'],
             additionalInfo: {
               'source': 'Beauty API',
-              'data_freshness': 'Gerçek zamanlı',
-              'product_type': 'Cilt Bakım Ürünü',
+              'data_freshness': 'Real-time',
+              'product_type': 'Skincare Product',
               'price': productData['price'],
               'rating': productData['rating'],
             },
@@ -176,11 +218,11 @@ class ProductService {
       for (var photoData in data['results']) {
         products.add(Product(
           id: photoData['id']?.toString() ?? DateTime.now().millisecondsSinceEpoch.toString(),
-          name: '${query} - Ürün Resmi',
+          name: '${query} - Product Image',
           barcode: null,
           brand: 'Unsplash',
           category: _getSkincareCategory(query),
-          description: 'Ürün görseli: ${photoData['alt_description'] ?? ''}',
+          description: 'Product image: ${photoData['alt_description'] ?? ''}',
           ingredients: null,
           nutritionInfo: null,
           imageUrl: photoData['urls']['small'],
@@ -246,26 +288,26 @@ class ProductService {
 
   /// Cilt bakım kategorisi belirle
   static String _getSkincareCategory(String? name) {
-    if (name == null) return 'Cilt Bakım';
+    if (name == null) return 'Skincare';
     
     final nameLower = name.toLowerCase();
     
     if (nameLower.contains('cleanser') || nameLower.contains('temizlik')) {
-      return 'Temizlik';
+      return 'Cleanser';
     } else if (nameLower.contains('moisturizer') || nameLower.contains('nemlendirici')) {
-      return 'Nemlendirici';
+      return 'Moisturizer';
     } else if (nameLower.contains('serum')) {
       return 'Serum';
     } else if (nameLower.contains('sunscreen') || nameLower.contains('güneş')) {
-      return 'Güneş Kremi';
+      return 'Sunscreen';
     } else if (nameLower.contains('mask')) {
-      return 'Maske';
+      return 'Mask';
     } else if (nameLower.contains('toner') || nameLower.contains('tonik')) {
-      return 'Tonik';
+      return 'Toner';
     } else if (nameLower.contains('exfoliant') || nameLower.contains('peeling')) {
-      return 'Eksfoliant';
+      return 'Exfoliant';
     } else {
-      return 'Cilt Bakım';
+      return 'Skincare';
     }
   }
 
@@ -304,12 +346,12 @@ class ProductService {
       // Premium Cilt Bakım Ürünleri
       Product(
         id: 'cerave_001',
-        name: 'CeraVe Yüz Temizleyici',
+        name: 'CeraVe Facial Cleanser',
         barcode: '1234567890123',
         brand: 'CeraVe',
-        category: 'Temizlik',
+        category: 'Cleanser',
         description:
-            'Hassas ciltler için nazik yüz temizleyici. Ceramides ve hyaluronic acid içerir.',
+            'Gentle facial cleanser for sensitive skin. Contains ceramides and hyaluronic acid.',
         ingredients: [
           'Aqua',
           'Glycerin',
@@ -322,9 +364,9 @@ class ProductService {
         unit: '200ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Hassas',
-          'data_freshness': 'Test verisi',
-          'product_type': 'Cilt Bakım Ürünü',
+          'skin_type': 'Sensitive',
+          'data_freshness': 'Test data',
+          'product_type': 'Skincare Product',
           'safety_score': '9/10',
           'efficacy_score': '8/10',
         },
@@ -337,14 +379,14 @@ class ProductService {
         barcode: '1234567890124',
         brand: 'The Ordinary',
         category: 'Serum',
-        description: 'Gözenek görünümünü azaltan ve cildi dengeleyen serum',
+        description: 'Serum that reduces pore appearance and balances skin',
         ingredients: ['Aqua', 'Niacinamide', 'Zinc PCA', 'Hyaluronic Acid'],
         nutritionInfo: null,
         imageUrl: null,
         unit: '30ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Karma',
+          'skin_type': 'Combination',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
           'safety_score': '8/10',
@@ -358,15 +400,15 @@ class ProductService {
         name: 'La Roche-Posay Anthelios SPF 50+',
         barcode: '1234567890125',
         brand: 'La Roche-Posay',
-        category: 'Güneş Kremi',
-        description: 'Yüksek koruma faktörlü güneş kremi',
+        category: 'Sunscreen',
+        description: 'High protection factor sunscreen',
         ingredients: ['Aqua', 'Titanium Dioxide', 'Zinc Oxide', 'Glycerin'],
         nutritionInfo: null,
         imageUrl: null,
         unit: '50ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Tüm Cilt Tipleri',
+          'skin_type': 'All Skin Types',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
           'safety_score': '10/10',
@@ -380,17 +422,17 @@ class ProductService {
         name: 'Neutrogena Ultra Gentle Cleanser',
         barcode: '1234567890126',
         brand: 'Neutrogena',
-        category: 'Temizlik',
-        description: 'Hassas ciltler için ultra nazik temizleyici',
+        category: 'Cleanser',
+        description: 'Ultra gentle cleanser for sensitive skin',
         ingredients: ['Water', 'Glycerin', 'Cetearyl Alcohol', 'Stearic Acid'],
         nutritionInfo: null,
         imageUrl: null,
         unit: '250ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Hassas',
-          'data_freshness': 'Test verisi',
-          'product_type': 'Cilt Bakım Ürünü',
+          'skin_type': 'Sensitive',
+          'data_freshness': 'Test data',
+          'product_type': 'Skincare Product',
           'safety_score': '9/10',
           'efficacy_score': '7/10',
         },
@@ -402,8 +444,8 @@ class ProductService {
         name: 'Paula\'s Choice 2% BHA Liquid Exfoliant',
         barcode: '1234567890127',
         brand: 'Paula\'s Choice',
-        category: 'Peeling',
-        description: 'Gözenekleri temizleyen ve cildi yenileyen sıvı peeling',
+        category: 'Exfoliant',
+        description: 'Liquid exfoliant that cleanses pores and renews skin',
         ingredients: [
           'Water',
           'Methylpropanediol',
@@ -415,7 +457,7 @@ class ProductService {
         unit: '118ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Karma/Yağlı',
+          'skin_type': 'Combination/Oily',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
         },
@@ -428,7 +470,7 @@ class ProductService {
         barcode: '1234567890128',
         brand: 'Innisfree',
         category: 'Serum',
-        description: 'Yeşil çay tohumu ile nemlendirici serum',
+        description: 'Moisturizing serum with green tea seed',
         ingredients: [
           'Green Tea Extract',
           'Glycerin',
@@ -440,7 +482,7 @@ class ProductService {
         unit: '80ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Tüm Cilt Tipleri',
+          'skin_type': 'All Skin Types',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
         },
@@ -453,7 +495,7 @@ class ProductService {
         barcode: '1234567890129',
         brand: 'COSRX',
         category: 'Essence',
-        description: 'Salyangoz mukusu ile onarıcı essence',
+        description: 'Repairing essence with snail mucin',
         ingredients: [
           'Snail Secretion Filtrate',
           'Sodium Hyaluronate',
@@ -465,7 +507,7 @@ class ProductService {
         unit: '100ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Tüm Cilt Tipleri',
+          'skin_type': 'All Skin Types',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
         },
@@ -478,14 +520,14 @@ class ProductService {
         barcode: '1234567890130',
         brand: 'Laneige',
         category: 'Maske',
-        description: 'Gece boyu nemlendirici uyku maskesi',
+        description: 'Overnight moisturizing sleeping mask',
         ingredients: ['Water', 'Glycerin', 'Dimethicone', 'Hyaluronic Acid'],
         nutritionInfo: null,
         imageUrl: null,
         unit: '70ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Kuru',
+          'skin_type': 'Dry',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
         },
@@ -498,14 +540,14 @@ class ProductService {
         barcode: '1234567890131',
         brand: 'The Ordinary',
         category: 'Serum',
-        description: 'Yoğun nemlendirici hyaluronic acid serumu',
+        description: 'Intense moisturizing hyaluronic acid serum',
         ingredients: ['Aqua', 'Sodium Hyaluronate', 'Panthenol', 'Glycerin'],
         nutritionInfo: null,
         imageUrl: null,
         unit: '30ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Tüm Cilt Tipleri',
+          'skin_type': 'All Skin Types',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
         },
@@ -517,8 +559,8 @@ class ProductService {
         name: 'CeraVe Moisturizing Cream',
         barcode: '1234567890132',
         brand: 'CeraVe',
-        category: 'Nemlendirici',
-        description: 'Ceramides ile güçlendirilmiş nemlendirici krem',
+        category: 'Moisturizer',
+        description: 'Moisturizing cream fortified with ceramides',
         ingredients: [
           'Aqua',
           'Glycerin',
@@ -531,7 +573,7 @@ class ProductService {
         unit: '50ml',
         additionalInfo: {
           'source': 'Mock Data',
-          'skin_type': 'Kuru/Hassas',
+          'skin_type': 'Dry/Sensitive',
           'data_freshness': 'Test verisi',
           'product_type': 'Cilt Bakım Ürünü',
         },
@@ -552,29 +594,29 @@ class ProductService {
   /// Get product categories - expanded list
   static Future<List<String>> getCategories() async {
     return [
-      'Temizlik',
-      'Nemlendirici',
+      'Cleanser',
+      'Moisturizer',
       'Serum',
-      'Güneş Kremi',
-      'Maske',
-      'Tonik',
-      'Eksfoliant',
-      'Cilt Bakım',
-      'İçecek',
-      'Atıştırmalık',
-      'Süt Ürünü',
-      'Genel Ürün',
+      'Sunscreen',
+      'Mask',
+      'Toner',
+      'Exfoliant',
+      'Skincare',
+      'Beverage',
+      'Snack',
+      'Dairy',
+      'General Product',
     ];
   }
 
   /// Search products by category - now uses cilt bakım API'leri
   static Future<List<Product>> searchByCategory(String category) async {
     try {
-      print('🔍 Kategori araması: $category');
+      print('🔍 Category search: $category');
       // Cilt bakım kategorileri için arama yap
       return await _searchBeautyAPI(category);
     } catch (e) {
-      print('❌ Kategori arama hatası: $e');
+      print('❌ Category search error: $e');
       return [];
     }
   }

@@ -38,9 +38,28 @@ Test Adımları:
 
 ---
 
-## 💾 **2. VERİTABANI İŞLEMLERİ TESTİ**
+## 💾 **2. VERİTABANI VE FIRESTORE TESTİ**
 
-### **A) Cilt Bakım Kaydı Ekleme**
+### **A) Firestore Konsol Kontrolü (Web)**
+"Firestore'u konsolda nasıl çalıştırırım?" sorusu için:
+Firestore **bulut tabanlıdır**, yerel terminalden "çalıştırılmaz". Ancak verileri görmek için:
+1. 🌐 [Firebase Console](https://console.firebase.google.com/) adresine git
+2. 📂 Projeni seç
+3. 🗄️ Sol menüden **Firestore Database**'e tıkla
+4. 📦 **Data** sekmesinde `products` koleksiyonunu görmelisin
+5. ✅ Burada 500+ ürünün (ID: `gen_0`, `gen_1`...) listelendiğini doğrula
+
+### **B) Uygulama İçi Log Kontrolü (Debug Console)**
+Uygulama çalışırken seeding (ilk veri yükleme) işlemini doğrulamak için:
+1. 💻 IDE'nizde (VS Code) **Debug Console** sekmesini açın
+2. 🔄 Uygulamayı başlatın veya yeniden başlatın
+3. 🔍 Şu logları arayın:
+   - `🌱 Seeding initial data to Firestore...`
+   - `🚀 Generating massive dataset...`
+   - `Saved chunk of 400 products...`
+   - `✅ Seeding completed!`
+
+### **C) Cilt Bakım Kaydı Ekleme (Uygulama İçi)**
 ```bash
 Test Adımları:
 1. 🏠 Ana sayfada "Yeni Kayıt Ekle" butonuna tıkla

@@ -55,6 +55,11 @@ lib/firebase_options.dart
 **/.env
 **/.env.local
 
+# Keystore files (sensitive - DO NOT COMMIT!)
+**/key.properties
+**/*.jks
+**/*.keystore
+
 # Log files
 *.log
 flutter_*.log

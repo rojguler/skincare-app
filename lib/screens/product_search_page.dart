@@ -811,7 +811,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'Ürün Ara',
+                                'Search Product',
                                 style: GoogleFonts.poppins(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -820,7 +820,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                'Ürün adını yazın veya barkod tarayın',
+                                'Enter product name or scan barcode',
                                 style: GoogleFonts.poppins(
                                   fontSize: 14,
                                   color: AppColors.textSecondary,
@@ -872,7 +872,7 @@ class _ProductSearchPageState extends State<ProductSearchPage> {
                                         ),
                                         const SizedBox(width: 12),
                                         Text(
-                                          'Son Aramalar:',
+                                          'Recent Searches:',
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
@@ -951,7 +951,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 24),
         ),
         title: Text(
-          'Barkod Tarayıcı',
+          'Barcode Scanner',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -1007,7 +1007,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                'Barkodu tarama alanına yerleştirin',
+                'Place barcode in scanning area',
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
