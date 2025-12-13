@@ -4,12 +4,13 @@ import '../models/product.dart';
 import 'firestore_service.dart';
 
 class ProductService {
-  // Cilt Bakım Odaklı API'ler (Gerçek API'ler)
+  // Cilt Bakım Odaklı API'ler (Deprecated - use SkincareApiService instead)
+  @Deprecated('Use SkincareApiService instead')
   static const String _skincareApi = 'https://api.unsplash.com/search/photos?query=';
+  @Deprecated('Use SkincareApiService instead')
   static const String _beautyApi = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=';
+  @Deprecated('Use SkincareApiService instead')
   static const String _cosmeticsApi = 'https://jsonplaceholder.typicode.com/posts';
-  
-  // Fallback API'leri kaldırıldı - sadece cilt bakım odaklı API'ler kullanılıyor
 
   // Cilt Bakım Odaklı Arama Fonksiyonları
   static Future<List<Product>> searchByName(String query) async {
@@ -33,25 +34,8 @@ class ProductService {
         return results;
       }
 
-      // 2. Eğer sonuç yoksa, Unsplash API'yi dene (ürün resimleri için)
-      print('🔍 Trying Unsplash API...');
-      if (results.isEmpty) {
-        results = await _searchUnsplashAPI(query);
-        if (results.isNotEmpty) {
-          print('✅ Unsplash API returned ${results.length} products');
-          return results;
-        }
-      }
-
-      // 3. Sonuç yoksa, genel API'yi dene
-      print('🔍 Trying Cosmetics API...');
-      if (results.isEmpty) {
-        results = await _searchCosmeticsAPI(query);
-        if (results.isNotEmpty) {
-          print('✅ Cosmetics API returned ${results.length} products');
-          return results;
-        }
-      }
+      // 2-3. Unsplash ve Cosmetics API removed - not reliable
+      // Using mock data as fallback
 
       // 4. Sonuç yoksa, mock data kullan (cilt bakım odaklı)
       print('⚠️ All APIs returned empty, using mock data');
@@ -117,63 +101,7 @@ class ProductService {
     return [];
   }
 
-  /// Unsplash API arama (ürün resimleri için)
-  static Future<List<Product>> _searchUnsplashAPI(String query) async {
-    try {
-      final response = await http
-          .get(
-            Uri.parse('$_skincareApi${Uri.encodeComponent(query)}&per_page=10'),
-            headers: {
-              'User-Agent': 'RojdaSkincare/1.0',
-              'Accept': 'application/json',
-            },
-          )
-          .timeout(const Duration(seconds: 15));
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final products = _parseUnsplashResults(data, query);
-        if (products.isNotEmpty) {
-          print('✅ Unsplash API: ${products.length} images found');
-        }
-        return products;
-      } else {
-        print('⚠️ Unsplash API error: ${response.statusCode}');
-      }
-    } catch (e) {
-      print('❌ Unsplash API error: $e');
-    }
-    return [];
-  }
-
-  /// Cosmetics API arama (genel ürün bilgileri)
-  static Future<List<Product>> _searchCosmeticsAPI(String query) async {
-    try {
-      final response = await http
-          .get(
-            Uri.parse('$_cosmeticsApi?_limit=5'),
-            headers: {
-              'User-Agent': 'RojdaSkincare/1.0',
-              'Accept': 'application/json',
-            },
-          )
-          .timeout(const Duration(seconds: 15));
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final products = _parseCosmeticsResults(data, query);
-        if (products.isNotEmpty) {
-          print('✅ Cosmetics API: ${products.length} products found');
-        }
-        return products;
-      } else {
-        print('⚠️ Cosmetics API error: ${response.statusCode}');
-      }
-    } catch (e) {
-      print('❌ Cosmetics API error: $e');
-    }
-    return [];
-  }
+  // Unsplash and Cosmetics API methods removed - not reliable
 
   /// Beauty API sonuçlarını parse et
   static List<Product> _parseBeautyAPIResults(dynamic data, String query) {
@@ -210,68 +138,7 @@ class ProductService {
     return products;
   }
 
-  /// Unsplash sonuçlarını parse et (ürün resimleri için)
-  static List<Product> _parseUnsplashResults(dynamic data, String query) {
-    List<Product> products = [];
-    
-    if (data is Map && data['results'] != null) {
-      for (var photoData in data['results']) {
-        products.add(Product(
-          id: photoData['id']?.toString() ?? DateTime.now().millisecondsSinceEpoch.toString(),
-          name: '${query} - Product Image',
-          barcode: null,
-          brand: 'Unsplash',
-          category: _getSkincareCategory(query),
-          description: 'Product image: ${photoData['alt_description'] ?? ''}',
-          ingredients: null,
-          nutritionInfo: null,
-          imageUrl: photoData['urls']['small'],
-          unit: null,
-          additionalInfo: {
-            'source': 'Unsplash',
-            'data_freshness': 'Gerçek zamanlı',
-            'product_type': 'Cilt Bakım Ürünü',
-            'photographer': photoData['user']['name'],
-          },
-          createdAt: DateTime.now(),
-          updatedAt: DateTime.now(),
-        ));
-      }
-    }
-    
-    return products;
-  }
-
-  /// Cosmetics API sonuçlarını parse et
-  static List<Product> _parseCosmeticsResults(dynamic data, String query) {
-    List<Product> products = [];
-    
-    if (data is List) {
-      for (var postData in data) {
-        products.add(Product(
-          id: postData['id']?.toString() ?? DateTime.now().millisecondsSinceEpoch.toString(),
-          name: '${query} - ${postData['title']}',
-          barcode: null,
-          brand: 'Cosmetics API',
-          category: _getSkincareCategory(query),
-          description: postData['body'] ?? '',
-          ingredients: null,
-          nutritionInfo: null,
-          imageUrl: null,
-          unit: null,
-          additionalInfo: {
-            'source': 'Cosmetics API',
-            'data_freshness': 'Gerçek zamanlı',
-            'product_type': 'Cilt Bakım Ürünü',
-          },
-          createdAt: DateTime.now(),
-          updatedAt: DateTime.now(),
-        ));
-      }
-    }
-    
-    return products;
-  }
+  // Unsplash and Cosmetics parsing methods removed
 
   /// İçerik listesini parse et
   static List<String>? _parseIngredientsList(dynamic ingredients) {
@@ -585,13 +452,13 @@ class ProductService {
 
   // Eski yardımcı fonksiyonlar kaldırıldı - cilt bakım odaklı API'ler kullanılıyor
 
-  /// Get recent products - now returns empty since we don't save to database
+  /// Get recent products - deprecated, use SkincareApiService instead
+  @Deprecated('Use SkincareApiService instead')
   static Future<List<Product>> getRecentProducts({int limit = 10}) async {
-    // Since we're not saving to database anymore, return empty list
     return [];
   }
 
-  /// Get product categories - expanded list
+  /// Get product categories - skincare only
   static Future<List<String>> getCategories() async {
     return [
       'Cleanser',
@@ -602,10 +469,6 @@ class ProductService {
       'Toner',
       'Exfoliant',
       'Skincare',
-      'Beverage',
-      'Snack',
-      'Dairy',
-      'General Product',
     ];
   }
 
@@ -621,9 +484,9 @@ class ProductService {
     }
   }
 
-  /// Add sample products for testing
+  /// Add sample products for testing - deprecated, not used anymore
+  @Deprecated('Not used anymore')
   static Future<void> addSampleProducts() async {
-    // Since we're not saving to database, this function is now just for testing
-    print('Sample products function called - no database saving');
+    // Deprecated - not used
   }
 }
