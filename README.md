@@ -99,25 +99,88 @@ GlowSun is a modern Flutter application designed for personalized skincare routi
 ## 📱 Screenshots
 
 ### Home Page
+<div align="center">
+  <img src="screenshots/homepage.jpg" width="200" alt="Home Page">
+  <img src="screenshots/homepage2.jpg" width="200" alt="Home Page 2">
+</div>
 - Modern and clean design
 - Daily routine cards
 - Quick access buttons
 - Progress tracking
 
+### Login & Authentication
+<div align="center">
+  <img src="screenshots/login.jpg" width="200" alt="Login Page">
+</div>
+
 ### Profile Page
+<div align="center">
+  <img src="screenshots/profilepage.jpg" width="200" alt="Profile Page">
+  <img src="screenshots/profilepae2.jpg" width="200" alt="Profile Page 2">
+</div>
 - Customizable profile
 - Skin type and problems
 - Direct editing capabilities
 
-### Statistics
+### Statistics & Analytics
+<div align="center">
+  <img src="screenshots/statistics.jpg" width="200" alt="Statistics">
+  <img src="screenshots/statisitcs2.jpg" width="200" alt="Statistics 2">
+</div>
 - Detailed charts and graphs
 - Analysis reports
 - Progress tracking
 
-### Calendar
+### Calendar View
+<div align="center">
+  <img src="screenshots/calendar.jpg" width="200" alt="Calendar">
+</div>
 - Monthly view with entries
 - Detailed daily view
 - Filtering options
+
+### Habit Tracking
+<div align="center">
+  <img src="screenshots/habits.jpg" width="200" alt="Habits">
+  <img src="screenshots/habits2.jpg" width="200" alt="Habits 2">
+  <img src="screenshots/habits3.jpg" width="200" alt="Habits 3">
+</div>
+- Daily/weekly/monthly habits
+- Progress tracking with animations
+- Confetti celebrations
+
+### Product Search
+<div align="center">
+  <img src="screenshots/productsearch.jpg" width="200" alt="Product Search">
+</div>
+- Search by name, brand, or ingredient
+- Barcode scanning support
+- Product recommendations
+
+### Entry Management
+<div align="center">
+  <img src="screenshots/create.jpg" width="200" alt="Create Entry">
+  <img src="screenshots/entrypage.jpg" width="200" alt="Entry Page">
+  <img src="screenshots/entrypage2.jpg" width="200" alt="Entry Page 2">
+  <img src="screenshots/allentires.jpg" width="200" alt="All Entries">
+</div>
+
+### Skin Type Quiz
+<div align="center">
+  <img src="screenshots/quiz.jpg" width="200" alt="Skin Quiz">
+</div>
+- 12 questions to discover your skin type
+- 95% accuracy
+
+### Skincare Information
+<div align="center">
+  <img src="screenshots/scincreinformation.jpg" width="200" alt="Skincare Info">
+  <img src="screenshots/scincareinformation2.jpg" width="200" alt="Skincare Info 2">
+  <img src="screenshots/scincareinformation3.jpg" width="200" alt="Skincare Info 3">
+</div>
+- Detailed ingredient information
+- Usage recommendations
+- Compatibility checks
 
 ## 🚀 Installation
 
